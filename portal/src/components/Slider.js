@@ -1,4 +1,3 @@
-import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -8,7 +7,6 @@ import "swiper/components/pagination/pagination.min.css"
 import "swiper/components/navigation/navigation.min.css"
 
 import "./Slider.css";
-
 
 // import Swiper core and required modules
 import SwiperCore, { Autoplay, Navigation } from 'swiper/core';
@@ -21,12 +19,19 @@ const Slider = () => {
   return (
     <>
       <Swiper spaceBetween={30} centeredSlides={true} autoplay={{
-        "delay": 6000,
+        "delay": 5000,
         "disableOnInteraction": false
       }} navigation={true} className="mySwiper">
         <SwiperSlide>
           <img
             src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/OnePlusNordNewLaunch/28th/GW/D23753221_OnePlus_Nord_New_launch_GW_Design_SIM_Tall_hero_1500x600._CB668899827_.jpg"
+            alt=""
+          />
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/AmazonVideo/2021/X-site/SingleTitle/Mauritian/3000x1200_Hero-Tall_JPN._CB667162087_.jpg"
             alt=""
           />
         </SwiperSlide>
@@ -50,7 +55,7 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://images-eu.ssl-images-amazon.com/images/G/31/prime/Gateway/2021/desktop-2x._CB658860139_.jpg"
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/AmazonVideo/2021/X-site/SingleTitle/WW84/Launch/3000x1200_Hero-Tall_JPN._CB669639161_.jpg"
             alt=""
           />
         </SwiperSlide>
