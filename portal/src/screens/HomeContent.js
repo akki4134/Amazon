@@ -2,11 +2,8 @@ import './styles/HomeContent.css'
 
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-
 import Button from 'react-bootstrap/Button'
-
 import Slider from '../components/Slider'
-
 import { useHistory } from 'react-router-dom'
 
 const HomeContent = () => {
@@ -27,7 +24,7 @@ const HomeContent = () => {
 
                             <div className="header_text">
                                 Book tickets for essential travel
-                             </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col">
@@ -67,7 +64,7 @@ const HomeContent = () => {
 
                             <div>
                                 Explore more from Amazon Pay
-                             </div>
+                            </div>
                         </div>
                     </Col>
 
@@ -114,7 +111,7 @@ const HomeContent = () => {
                             </div>
                             <div>
                                 See more
-                             </div>
+                            </div>
                         </div>
                     </Col>
 
@@ -173,9 +170,9 @@ const HomeContent = () => {
                             <div className="home__row">
                                 <div className="header_text">
                                     Sign in for your best experience
-                             </div>
+                                </div>
                                 <div className="button">
-                                    <Button size="sm" onClick={()=>{ history.push('/admin') }} variant="warning">Sign in Securely</Button>
+                                    <Button size="sm" onClick={() => { history.push('/admin') }} variant="warning">Sign in Securely</Button>
                                 </div>
                             </div>
                         </div>
@@ -183,9 +180,7 @@ const HomeContent = () => {
                         <div class="col">
                             <img class="img-fluid" alt="Responsive"
                                 src="https://m.media-amazon.com/images/G/31/img19/AMS/Houseads/Laptops-Sept2019._CB436595915_.jpg"
-
                             />
-
                         </div>
                     </div>
 
@@ -193,26 +188,72 @@ const HomeContent = () => {
                 <br />
                 <br />
                 <Row>
-                    <Col>
+                    <Col lg={3} md={6} sm={6} >
+
                         <div className="home__row">
-                            Styles for Men | Up to 70% off
-                    </div>
+
+                            <div className="header_text">
+                                Styles for Men | Up to 60% off
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <img class="img-thumbnail"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/1-min._SY232_CB666463578_.jpg"
+                                        alt=""
+                                    />
+                                    <p> Men's Clothing </p>
+                                </div>
+
+                                <div class="col">
+                                    <img class="img-thumbnail"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/2-min._SY232_CB666463578_.jpg"
+                                        alt=""
+                                    />
+                                    <p>Footwear</p>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col">
+                                    <img class="img-thumbnail"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/4-min._SY232_CB666463578_.jpg"
+                                        alt=""
+                                    />
+                                    <p> Watches</p>
+                                </div>
+
+                                <div class="col">
+                                    <img class="img-thumbnail"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/3-min._SY232_CB666463578_.jpg"
+                                        alt=""
+                                    />
+                                    <p>Bags & Luggage</p>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                View all Offers
+                            </div>
+                        </div>
                     </Col>
 
                     <Col>
                         <div className="home__row">
                             Shop by Category
-                    </div>
+                        </div>
                     </Col>
                     <Col>
                         <div className="home__row">
                             Amazon Brands & more
-                    </div>
+                        </div>
                     </Col>
                     <Col>
                         <div className="home__row">
                             Revamp your home in style
-                    </div>
+                        </div>
                     </Col>
                 </Row>
 

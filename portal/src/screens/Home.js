@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
 
-
-
 import './styles/Home.css'
 import HomeContent from './HomeContent'
 
-
 import Navbar from '../components/Navbar'
+
 import Footer from '../components/Footer'
 
 import Alert from 'react-bootstrap/Alert'

@@ -1,145 +1,176 @@
 import './styles/Navbar.css'
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    InputBase,
+    makeStyles,
+} from '@material-ui/core';
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { IoMenu, } from 'react-icons/io5'
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    navbar: {
+        background: '#131921'
+    },
+    menuicon: {
+        [theme.breakpoints.up('xs')]: {
+            fontSize: 30,
+        },
+        [theme.breakpoints.up('sm')]: {
+            fontSize: 30,
+        },
+        [theme.breakpoints.up('md')]: {
+            display: "none"
+        },
+        [theme.breakpoints.up('lg')]: {
+            display: "none"
+        },
+    },
+    maintitle: {
+        borderColor: 'transporent',
+        margin: 10,
+        '&:hover': {
+            border: '1.5px solid',
+            borderColor: '#fff',
+            cursor: 'pointer',
+            borderRadius: '2px',
+            paddingLeft:-20,
+        }
+    },
+    title: {
+        flexGrow: 1,
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+            display: 'block',
+        },
+        [theme.breakpoints.up('md')]: {
+            fontSize: 10,
+            fontWeight: 550,
+            color: '#cccccc',
+        },
+        [theme.breakpoints.up('lg')]: {
+            fontSize: 12,
+            fontWeight: 550,
+            color: '#cccccc',
+        },
+    },
+    subtitle: {
+        flexGrow: 1,
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+            display: 'block',
+        },
+        [theme.breakpoints.up('md')]: {
+            fontSize: 12,
+            fontWeight: 600,
+        },
+        [theme.breakpoints.up('lg')]: {
+            fontSize: 14,
+            fontWeight: 600,
+        },
+    },
+    search: {
+        [theme.breakpoints.only('xs')]: {
+            position: 'absolute',
+            marginLeft: 120,
+            width: 'auto',
+        },
+        [theme.breakpoints.only('sm')]: {
+            position: 'relative',
+            width: 'auto',
+        },
+        [theme.breakpoints.only('md')]: {
+            position: 'relative',
+            width: 550,
+            maxWidth: 550,
+        },
+        [theme.breakpoints.only('lg')]: {
+            position: 'relative',
+            width: 750,
+            maxWidth: 850,
+        },
+        [theme.breakpoints.only('xl')]: {
+            position: 'relative',
+            width: 1300,
+            maxWidth: 1300,
+        },
+    },
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputInput: {
+
+    },
+}));
 
 
-const Navbar = () => {
+const Navigation = () => {
+
+    const classes = useStyles();
+
     return (
-        <div >
-            <Container fluid>
-                <Row>
-                    <div className="header">
+        <div className={classes.root}>
+            <AppBar className={classes.navbar} position="static">
 
-                        <Col>
-                            <img
-                                className="header__logo" alt='logo'
-                                src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-                            />
-                        </Col>
+                <Toolbar disableGutters={true}>
 
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineOne">Hello</span>
-                                <span className="header__optionLineTwo">Select your address</span>
-                            </div>
-                        </Col>
-
-                        <Col lg={5} md={5} sd={6} xs={6}>
-                            <div className="header__search">
-
-                                <input className="header__searchInput" type="search" />
-
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineOne">flag</span>
-                            </div>
-                        </Col>
-
-                        <Col>
-
-                            <div className="header__option">
-                                <span className="header__optionLineOne">Hello, sign in</span>
-                                <span className="header__optionLineTwo">Accounts & Lists </span>
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineOne">Returns</span>
-                                <span className="header__optionLineTwo">& Orders</span>
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineTwo">Cart</span>
-                            </div>
-                        </Col>
-
+                    <div className={classes.menuicon}>
+                        <IoMenu />
                     </div>
-                </Row>
 
+                    <img
+                        className="header__logo" alt='logo'
+                        src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+                    />
 
-
-                <Row>
-                    <div className="subheader" >
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineTwo">All</span>
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineThree">Best Seller</span>
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineThree">Mobiles</span>
-                            </div>
-
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineThree">Prime</span>
-                            </div>
-
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineThree">Fashion</span>
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineThree">Electronics</span>
-                            </div>
-
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineThree">New Releases</span>
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineThree">Customer Services</span>
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <div className="header__option">
-                                <span className="header__optionLineThree">Today's Deals</span>
-                            </div>
-                        </Col>
-
-                        <Col>
-                            <img
-                                src="https://images-eu.ssl-images-amazon.com/images/G/31/AmazonVideo/2021/X-site/SingleTitle/WW84/Launch/400x39-SWM_With-disclaimer_JPN._CB669638753_.jpg"
-                                alt=""
-                            />
-                        </Col>
-
+                    <div className={classes.maintitle}>
+                        <Typography className={classes.title} variant="h6">
+                            Hello
+                        </Typography>
+                        <Typography className={classes.subtitle} variant="h6">
+                            Select your Address
+                        </Typography>
                     </div>
-                </Row>
-                
-            </Container>
+
+                    <InputBase className={classes.search} />
+
+                    <div className={classes.maintitle}>
+                        <Typography className={classes.title} variant="h6">
+                            Hello,Sign In
+                        </Typography>
+                        <Typography className={classes.subtitle} variant="h6">
+                            Account & List
+                        </Typography>
+                    </div>
+
+                    <div className={classes.maintitle}>
+                        <Typography className={classes.title} variant="h6">
+                            Returns
+                        </Typography>
+                        <Typography className={classes.subtitle} variant="h6">
+                            & Orders
+                        </Typography>
+                    </div>
+                    <div className={classes.maintitle}>
+                        <Typography className={classes.subtitle} variant="h6">
+                            Cart
+                        </Typography>
+                    </div>
+                </Toolbar>
+            </AppBar>
         </div>
-
-    )
+    );
 }
 
-export default Navbar
+
+export default Navigation
