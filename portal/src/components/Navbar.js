@@ -1,4 +1,4 @@
-import './Navbar.css'
+import './styles/Navbar.css'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -10,8 +10,8 @@ const Navbar = () => {
         <div >
             <Container fluid>
                 <Row>
-
                     <div className="header">
+
                         <Col>
                             <img
                                 className="header__logo" alt='logo'
@@ -33,11 +33,13 @@ const Navbar = () => {
 
                             </div>
                         </Col>
+
                         <Col>
                             <div className="header__option">
                                 <span className="header__optionLineOne">flag</span>
                             </div>
                         </Col>
+
                         <Col>
 
                             <div className="header__option">
@@ -45,17 +47,20 @@ const Navbar = () => {
                                 <span className="header__optionLineTwo">Accounts & Lists </span>
                             </div>
                         </Col>
+
                         <Col>
                             <div className="header__option">
                                 <span className="header__optionLineOne">Returns</span>
                                 <span className="header__optionLineTwo">& Orders</span>
                             </div>
                         </Col>
+
                         <Col>
                             <div className="header__option">
                                 <span className="header__optionLineTwo">Cart</span>
                             </div>
                         </Col>
+
                     </div>
                 </Row>
 
@@ -63,6 +68,7 @@ const Navbar = () => {
 
                 <Row>
                     <div className="subheader" >
+
                         <Col>
                             <div className="header__option">
                                 <span className="header__optionLineTwo">All</span>
@@ -126,8 +132,10 @@ const Navbar = () => {
                                 alt=""
                             />
                         </Col>
+
                     </div>
                 </Row>
+                
             </Container>
         </div>
 

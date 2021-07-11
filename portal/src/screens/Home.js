@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 
 
-import './Home.css'
+import './styles/Home.css'
 import HomeContent from './HomeContent'
 
 
@@ -16,7 +16,7 @@ const Home = () => {
     function AlertDismissibleExample() {
 
         useEffect(() => {
-            setTimeout(() => { setShow(false) }, 10000);
+            setTimeout(() => { setShow(false) }, 200);
         }, [])
 
         const [show, setShow] = useState(true);
