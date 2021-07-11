@@ -17,7 +17,7 @@ const HomeContent = () => {
                 <Slider />
             </div>
 
-            <div class="container-fluid">
+            <div className="container-fluid">
                 <Row>
                     <Col lg={3} md={6} sm={6} >
                         <div className="home__row">
@@ -26,34 +26,34 @@ const HomeContent = () => {
                                 Book tickets for essential travel
                             </div>
 
-                            <div class="row">
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                            <div className="row">
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Flight_PC_QC_372x232._SY232_CB656565308_.jpg"
                                         alt=""
                                     />
                                     <p>Flight ticket</p>
 
                                 </div>
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Bus_PC_QC_372x232._SY232_CB656565308_.jpg"
                                         alt=""
                                     />
                                     <p>Bus ticket</p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                            <div className="row">
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Flight_PC_QC_372x232._SY232_CB656565308_.jpg"
                                         alt=""
                                     />
                                     <p>Train ticket</p>
 
                                 </div>
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Bus_PC_QC_372x232._SY232_CB656565308_.jpg"
                                         alt=""
                                     />
@@ -75,34 +75,34 @@ const HomeContent = () => {
                                 Professional tools, testing & more
                             </div>
 
-                            <div class="row">
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                            <div className="row">
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Biss/2018/QC/Tools2x._SY232_CB424026090_.jpg"
                                         alt=""
                                     />
                                     <p>Professional tools</p>
 
                                 </div>
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Biss/2020/GW/Testing-_372x232._SY232_CB406506817_.jpg"
                                         alt=""
                                     />
                                     <p>Measuring instruments</p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                            <div className="row">
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Biss/2018/QC/Jan_san1_372x232._SY232_CB406505872_.jpg"
                                         alt=""
                                     />
                                     <p>Cleaning supplies</p>
 
                                 </div>
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img17/Biss/2018/QC/med2x._SY232_CB424026091_.jpg"
                                         alt=""
                                     />
@@ -123,34 +123,34 @@ const HomeContent = () => {
                                 Styles for Women | Up to 70% off
                             </div>
 
-                            <div class="row">
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                            <div className="row">
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Gateway/Womens_Fashion/Layer_668._SY232_CB656506084_.jpg"
                                         alt=""
                                     />
                                     <p> Women's Clothing </p>
 
                                 </div>
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Gateway/Womens_Fashion/Layer_669._SY232_CB656506084_.jpg"
                                         alt=""
                                     />
                                     <p>Footwear + Handbags</p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                            <div className="row">
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Gateway/Womens_Fashion/Layer_670._SY232_CB656506084_.jpg"
                                         alt=""
                                     />
                                     <p> Watches</p>
 
                                 </div>
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Gateway/Womens_Fashion/Layer_671._SY232_CB656506084_.jpg"
                                         alt=""
                                     />
@@ -165,8 +165,8 @@ const HomeContent = () => {
                         </div>
                     </Col>
 
-                    <div class="home__column col-lg-3 col-sm-6 col-md-6">
-                        <div class="col">
+                    <div className="home__column col-lg-3 col-sm-6 col-md-6">
+                        <div className="col">
                             <div className="home__row">
                                 <div className="header_text">
                                     Sign in for your best experience
@@ -177,8 +177,8 @@ const HomeContent = () => {
                             </div>
                         </div>
                         <br />
-                        <div class="col">
-                            <img class="img-fluid" alt="Responsive"
+                        <div className="col">
+                            <img className="img-fluid" alt="Responsive"
                                 src="https://m.media-amazon.com/images/G/31/img19/AMS/Houseads/Laptops-Sept2019._CB436595915_.jpg"
                             />
                         </div>
@@ -196,17 +196,17 @@ const HomeContent = () => {
                                 Styles for Men | Up to 60% off
                             </div>
 
-                            <div class="row">
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                            <div className="row">
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/1-min._SY232_CB666463578_.jpg"
                                         alt=""
                                     />
                                     <p> Men's Clothing </p>
                                 </div>
 
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/2-min._SY232_CB666463578_.jpg"
                                         alt=""
                                     />
@@ -214,18 +214,18 @@ const HomeContent = () => {
                                 </div>
 
                             </div>
-                            <div class="row">
-                                
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                            <div className="row">
+
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/4-min._SY232_CB666463578_.jpg"
                                         alt=""
                                     />
                                     <p> Watches</p>
                                 </div>
 
-                                <div class="col">
-                                    <img class="img-thumbnail"
+                                <div className="col">
+                                    <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/3-min._SY232_CB666463578_.jpg"
                                         alt=""
                                     />
