@@ -25,6 +25,7 @@ db.on('error', err => {
     console.error('Mongo connection error')
 })
 
+
 //Middleware
 app.use(express.json()) // to send post request
 
