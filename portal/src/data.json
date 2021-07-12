@@ -1,0 +1,38 @@
+{
+    "clothing": {
+        "id": 1,
+        "departmentname": "clothing",
+        "categories": [
+            {
+                "id": 1,
+                "categoryname": "men"
+            },
+            {
+                "id": 2,
+                "categoryname": "women"
+            },
+            {
+                "id": 3,
+                "categoryname": "kids"
+            }
+        ]
+    },
+    "elecronics": {
+        "id": 1,
+        "departmentname": "clothing",
+        "categories": [
+            {
+                "id": 1,
+                "categoryname": "men"
+            },
+            {
+                "id": 2,
+                "categoryname": "women"
+            },
+            {
+                "id": 3,
+                "categoryname": "kids"
+            }
+        ]
+    }
+}

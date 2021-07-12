@@ -15,13 +15,22 @@ mongoose.connect(process.env.DB_CONNECTION, {
     useCreateIndex: true,
 });
 
+const db = mongoose.connection
+db.once('open', _ => {
+    console.log('Database connected')
+})
+
+db.on('error', err => {
+    console.error('connection error:', err)
+    console.error('Mongo connection error')
+})
 
 
 //Middleware
 app.use(express.json()) // to send post request
 
 //Route middleware
-app.use('/api/user', authRoute)
+    app.use('/api/user', authRoute)
 
 
-app.listen(8080, () => console.log("server connected"))
+app.listen(4000, () => console.log("server connected"))
