@@ -6,7 +6,7 @@ import User from '../Models/userModel.js';
 
 //middlewares
 import { loginValidation, registerValidation } from '../Middleware/userValidation.js';
-import { generateToken } from '../Middleware/Helper.js'
+import { generateToken } from '../Middleware/jwtToken.js'
 
 const userRouter = express.Router();
 
