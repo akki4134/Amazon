@@ -37,18 +37,6 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
 
-    const { error } = loginValidation(req.body)
-    if (error) return res.status(400).send(error.details[0].message)
 
-    const user = await User.findOne({ username: req.body.username })
-    if (!user) return res.status(400).send('Username not found')
-
-    const validate = await bcrypt.compare(req.body.password, user.password)
-    if (!validate) return res.status(400).send('Invalid password')
-
-    const token = jwt.sign({ _id: user._id }, process.env.SECRET);
-    res.header('auth-token', token).send(token)
-
-    res.status(200).send('user logged in sucessfully')
 
 }

@@ -1,12 +1,17 @@
-const express = require('express')
+import express from 'express'
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+
+import userRoute from './Routes/userRoute.js'
+
 const app = express()
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
 
-//import routes
-const authRoute = require('./Routes/userRoute')
-
+//Middleware
 dotenv.config();
+
+app.use(express.json()) // to send post request
+app.use(express.urlencoded({extended:true}))
+
 
 //connect Database
 mongoose.connect(process.env.DB_CONNECTION, {
@@ -26,11 +31,12 @@ db.on('error', err => {
 })
 
 
-//Middleware
-app.use(express.json()) // to send post request
-
 //Route middleware
-    app.use('/api/user', authRoute)
+app.use('/api/user', userRoute)
+
+app.use((err, req, res, next) => {
+    res.status(500).send({ message: err.message });
+  });
 
 
 app.listen(4000, () => console.log("server connected"))
