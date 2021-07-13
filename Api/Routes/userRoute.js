@@ -13,34 +13,34 @@ const userRouter = express.Router();
 userRouter.post(
     '/login',
     expressAsyncHandler(async (req, res) => {
-    
+
         const { error } = loginValidation(req.body)
         if (error) return res.status(400).send(error.details[0].message)
-    
-        const user = 
-        const username = await User.findOne({ username: req.body.username })
-        if (!username) return res.status(400).send('Username not found')
 
-        const email = await User.findOne({ email: req.body.email });
-        if (!email) return res.status(400).send('email not found')
+        if (User.findOne({ username: req.body.username }) || User.findOne({ email: req.body.email })) {
 
-        const validate = await bcrypt.compare(req.body.password, user.password)
-        if (!validate) return res.status(400).send('Invalid password')
+            const validate = await bcrypt.compare(req.body.password, user.password)
+            if (!validate) return res.status(400).send('Invalid password')
 
-        if (user) {
-            if (bcrypt.compareSync(req.body.password, user.password)) {
-                res.send({
-                    _id: user._id,
-                    name: user.name,
-                    email: user.email,
-                    isAdmin: user.isAdmin,
-                    isSeller: user.isSeller,
-                    token: generateToken(user),
-                });
-                return;
-            }
+            res.send({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                isSeller: user.isSeller,
+                token: generateToken(user),
+            });
+            return;
         }
-        res.status(401).send({ message: 'Invalid email or password' });
+        res.status(400).send({ message: 'Invalid email or Username' });
+
+
+        // const username = await User.findOne({ username: req.body.username })
+        // if (!username) return res.status(400).send('Username not found')
+
+        // const email = await User.findOne({ email: req.body.email });
+        // if (!email) return res.status(400).send('email not found')
+
     })
 );
 
@@ -54,8 +54,8 @@ userRouter.post(
         const usernameExist = await User.findOne({ username: req.body.username })
         if (usernameExist) return res.status(400).send('Username already exists')
 
-        const usernameExist = await User.findOne({ username: req.body.username })
-        if (usernameExist) return res.status(400).send('Username already exists')
+        const emailExist = await User.findOne({ username: req.body.username })
+        if (emailExist) return res.status(400).send('Username already exists')
 
         const phonenumberExist = await User.findOne({ phonenumber: req.body.phonenumber })
         if (phonenumberExist) return res.status(400).send('Phone Number already exists')
