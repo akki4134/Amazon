@@ -17,8 +17,9 @@ userRouter.post(
         const { error } = loginValidation(req.body)
         if (error) return res.status(400).send(error.details[0].message)
 
-        if (User.findOne({ username: req.body.username }) || User.findOne({ email: req.body.email })) {
+        const user = await User.findOne({ email: req.body.email });
 
+        if (user) {
             const validate = await bcrypt.compare(req.body.password, user.password)
             if (!validate) return res.status(400).send('Invalid password')
 
@@ -32,7 +33,7 @@ userRouter.post(
             });
             return;
         }
-        res.status(400).send({ message: 'Invalid email or Username' });
+        res.status(400).send({ message: 'Invalid email' });
 
 
         // const username = await User.findOne({ username: req.body.username })
@@ -51,11 +52,11 @@ userRouter.post(
         const { error } = registerValidation(req.body)
         if (error) return res.status(400).send(error.details[0].message)
 
-        const usernameExist = await User.findOne({ username: req.body.username })
-        if (usernameExist) return res.status(400).send('Username already exists')
+        const nameExist = await User.findOne({ name: req.body.name })
+        if (nameExist) return res.status(400).send('name already exists')
 
-        const emailExist = await User.findOne({ username: req.body.username })
-        if (emailExist) return res.status(400).send('Username already exists')
+        const emailExist = await User.findOne({ email: req.body.email })
+        if (emailExist) return res.status(400).send('email already exists')
 
         const phonenumberExist = await User.findOne({ phonenumber: req.body.phonenumber })
         if (phonenumberExist) return res.status(400).send('Phone Number already exists')
@@ -65,7 +66,8 @@ userRouter.post(
         const hashpassword = await bcrypt.hash(req.body.password, salt)
 
         const user = new User({
-            username: req.body.username,
+            name: req.body.name,
+            email: req.body.email,
             phonenumber: req.body.phonenumber,
             password: hashpassword
         });
