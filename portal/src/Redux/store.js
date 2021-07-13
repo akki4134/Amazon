@@ -1,6 +1,8 @@
 
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+
+
 // import { cartReducer } from './reducers/cartReducers';
 // import {
 //   orderCreateReducer,
@@ -12,6 +14,8 @@ import thunk from 'redux-thunk';
 //   orderPayReducer,
 //   orderSummaryReducer,
 // } from './reducers/orderReducers';
+
+
 // import {
 //   productCategoryListReducer,
 //   productCreateReducer,
@@ -21,6 +25,8 @@ import thunk from 'redux-thunk';
 //   productReviewCreateReducer,
 //   productUpdateReducer,
 // } from './reducers/productReducers';
+
+
 // import {
 //   userAddressMapReducer,
 //   userDeleteReducer,
@@ -32,6 +38,7 @@ import thunk from 'redux-thunk';
 //   userUpdateProfileReducer,
 //   userUpdateReducer,
 // } from './reducers/userReducers';
+
 
 const initialState = {
   userSignin: {
@@ -49,6 +56,7 @@ const initialState = {
     paymentMethod: 'PayPal',
   },
 };
+
 const reducer = combineReducers({
 //   productList: productListReducer,
 //   productDetails: productDetailsReducer,
@@ -76,11 +84,15 @@ const reducer = combineReducers({
 //   userAddressMap: userAddressMapReducer,
 //   orderSummary: orderSummaryReducer,
 });
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
 const store = createStore(
   reducer,
   initialState,
   composeEnhancer(applyMiddleware(thunk))
 );
+
 
 export default store;

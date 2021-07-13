@@ -172,7 +172,7 @@ const HomeContent = () => {
                                     Sign in for your best experience
                                 </div>
                                 <div className="button">
-                                    <Button size="sm" onClick={() => { history.push('/admin') }} variant="warning">Sign in Securely</Button>
+                                    <Button size="sm" onClick={() => { history.push('/login') }} variant="warning">Sign in Securely</Button>
                                 </div>
                             </div>
                         </div>
