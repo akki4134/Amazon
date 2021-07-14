@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { Link, useHistory } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../actions/userActions';
+import { register } from '../Redux/Actions/userAction';
 
 import {
     makeStyles,
@@ -102,7 +102,7 @@ function Register(props) {
         : '/';
 
     const userRegister = useSelector((state) => state.userRegister);
-    const { userInfo, loading, error } = userRegister;
+    const { userInfo} = userRegister;
 
     const dispatch = useDispatch();
 

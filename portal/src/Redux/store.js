@@ -1,7 +1,6 @@
 
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
-
+import thunk from 'redux-thunk'
 
 // import { cartReducer } from './reducers/cartReducers';
 // import {
@@ -27,17 +26,17 @@ import thunk from 'redux-thunk';
 // } from './reducers/productReducers';
 
 
-// import {
-//   userAddressMapReducer,
-//   userDeleteReducer,
-//   userDetailsReducer,
-//   userListReducer,
-//   userRegisterReducer,
-//   userSigninReducer,
-//   userTopSellerListReducer,
-//   userUpdateProfileReducer,
-//   userUpdateReducer,
-// } from './reducers/userReducers';
+import {
+  // userAddressMapReducer,
+  // userDeleteReducer,
+  // userDetailsReducer,
+  // userListReducer,
+  userRegisterReducer,
+  userLoginReducer,
+  // userTopSellerListReducer,
+  // userUpdateProfileReducer,
+  // userUpdateReducer,
+} from '../Redux/Reducers/userReducer';
 
 
 const initialState = {
@@ -58,31 +57,31 @@ const initialState = {
 };
 
 const reducer = combineReducers({
-//   productList: productListReducer,
-//   productDetails: productDetailsReducer,
-//   cart: cartReducer,
-//   userSignin: userSigninReducer,
-//   userRegister: userRegisterReducer,
-//   orderCreate: orderCreateReducer,
-//   orderDetails: orderDetailsReducer,
-//   orderPay: orderPayReducer,
-//   orderMineList: orderMineListReducer,
-//   userDetails: userDetailsReducer,
-//   userUpdateProfile: userUpdateProfileReducer,
-//   userUpdate: userUpdateReducer,
-//   productCreate: productCreateReducer,
-//   productUpdate: productUpdateReducer,
-//   productDelete: productDeleteReducer,
-//   orderList: orderListReducer,
-//   orderDelete: orderDeleteReducer,
-//   orderDeliver: orderDeliverReducer,
-//   userList: userListReducer,
-//   userDelete: userDeleteReducer,
-//   userTopSellersList: userTopSellerListReducer,
-//   productCategoryList: productCategoryListReducer,
-//   productReviewCreate: productReviewCreateReducer,
-//   userAddressMap: userAddressMapReducer,
-//   orderSummary: orderSummaryReducer,
+  //   productList: productListReducer,
+  //   productDetails: productDetailsReducer,
+  //   cart: cartReducer,
+  userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
+  //   orderCreate: orderCreateReducer,
+  //   orderDetails: orderDetailsReducer,
+  //   orderPay: orderPayReducer,
+  //   orderMineList: orderMineListReducer,
+  //   userDetails: userDetailsReducer,
+  //   userUpdateProfile: userUpdateProfileReducer,
+  //   userUpdate: userUpdateReducer,
+  //   productCreate: productCreateReducer,
+  //   productUpdate: productUpdateReducer,
+  //   productDelete: productDeleteReducer,
+  //   orderList: orderListReducer,
+  //   orderDelete: orderDeleteReducer,
+  //   orderDeliver: orderDeliverReducer,
+  //   userList: userListReducer,
+  //   userDelete: userDeleteReducer,
+  //   userTopSellersList: userTopSellerListReducer,
+  //   productCategoryList: productCategoryListReducer,
+  //   productReviewCreate: productReviewCreateReducer,
+  //   userAddressMap: userAddressMapReducer,
+  //   orderSummary: orderSummaryReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
