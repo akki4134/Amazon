@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { Link } from 'react-router-dom';
-// import { signin } from '../actions/userActions';
+import { login } from '../Redux/Actions/userAction';
 
 import {
     makeStyles,
-    Grid, Button,
+    Grid, Button, TextField,
     Divider, Typography
 } from "@material-ui/core"
 
@@ -108,25 +108,25 @@ function Login(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // const redirect = props.location.search
-    //     ? props.location.search.split('=')[1]
-    //     : '/'
+    const redirect = props.location.search
+        ? props.location.search.split('=')[1]
+        : '/'
 
-    // const userSignin = useSelector((state) => state.userSignin);
-    // const { userInfo, loading, error } = userSignin
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin
 
-    //  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const submitHandler = (e) => {
-        e.preventDefault();
-        //  dispatch(signin(email, password));
+        //  e.preventDefault();
+        dispatch(login(email, password));
     };
 
-    // useEffect(() => {
-    //     if (userInfo) {
-    //         props.history.push(redirect);
-    //     }
-    // }, [props.history, redirect, userInfo]);
+    useEffect(() => {
+        if (userInfo) {
+            props.history.push(redirect);
+        }
+    }, [props.history, redirect, userInfo]);
 
     const classes = useStyles();
 
@@ -134,7 +134,7 @@ function Login(props) {
         <div className={classes.root}>
             <Grid className={classes.body} >
 
-                <Grid wrap="nowrap">
+                <Grid container wrap="nowrap">
                     <div >
                         <img height='100px' width='200px'
                             alt='logo'
@@ -147,26 +147,27 @@ function Login(props) {
                     <form onSubmit={submitHandler}>
                         <Typography>Sign-In</Typography>
 
-                        <input
-                            className={classes.textfeild}
-                            type="email"
-                            id="email"
-                            placeholder="Enter email"
-                            required
-                            onChange={(e) => setEmail(e.target.value)}
-                        ></input>
+
+                        <Grid container wrap="nowrap">
+                            <TextField size="small"
+                                className={classes.textfeild}
+                                id="email" label="Email"
+                                variant="outlined"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </Grid>
 
 
-                        <input
-                            className={classes.textfeild}
-                            type="email"
-                            id="password"
-                            placeholder="Enter password"
-                            required
-                            onChange={(e) => setPassword(e.target.value)}
-                        ></input>
-
-                        <Grid wrap="nowrap">
+                        <Grid container wrap="nowrap">
+                            <TextField size="small"
+                                autoComplete='true'
+                                type="password" className={classes.textfeild}
+                                id="password" label="Password"
+                                variant="outlined"
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid container wrap="nowrap">
                             <Button className={classes.button} onClick={() => submitHandler}>
                                 Login
                             </Button>
@@ -188,7 +189,7 @@ function Login(props) {
 
                 <br />
                 <br />
-                <Grid wrap="nowrap">
+                <Grid container wrap="nowrap">
                     <Button variant="contained" onClick={() => history.push('/register')} >Create your Amazon account</Button>
                 </Grid>
 
@@ -198,3 +199,4 @@ function Login(props) {
 }
 
 export default Login
+

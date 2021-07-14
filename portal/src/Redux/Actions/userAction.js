@@ -8,14 +8,15 @@ import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
 }
-from '../Constants/userConstants'
+    from '../Constants/userConstants'
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (name, email, phonenumber, password) => async (dispatch) => {
     dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password } });
     try {
-        const { data } = await Axios.post('/api/users/register', {
+        const { data } = await Axios.post('/api/user/register', {
             name,
             email,
+            phonenumber,
             password,
         });
         dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
@@ -32,10 +33,10 @@ export const register = (name, email, password) => async (dispatch) => {
     }
 };
 
-export const signin = (email, password) => async (dispatch) => {
+export const login = (email, password) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_REQUEST, payload: { email, password } });
     try {
-        const { data } = await Axios.post('/api/users/signin', { email, password });
+        const { data } = await Axios.post('/api/user/login', { email, password });
         dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
         localStorage.setItem('userInfo', JSON.stringify(data));
     } catch (error) {

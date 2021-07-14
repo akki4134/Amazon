@@ -24,7 +24,6 @@ userRouter.post(
             if (!validate) return res.status(400).send('Invalid password')
 
             res.send({
-                _id: user._id,
                 name: user.name,
                 email: user.email,
                 isAdmin: user.isAdmin,

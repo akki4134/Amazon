@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
     },
     textfeild: {
         margin: 10,
+
     },
     divider: {
         width: 70,
@@ -91,29 +92,33 @@ function Register(props) {
 
     let history = useHistory();
 
-    const [Name, setName] = useState('');
-    const [Email, setEmail] = useState('');
-    const [Phonenumber, setPhonenumber] = useState('');
-    const [Password, setPassword] = useState('');
-    const [ConfirmPassword, setConfirmPassword] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phonenumber, setPhonenumber] = useState('');
+    const [password, setPassword] = useState('');
+    // const [ConfirmPassword, setConfirmPassword] = useState('');
 
     const redirect = props.location.search
         ? props.location.search.split('=')[1]
         : '/';
 
     const userRegister = useSelector((state) => state.userRegister);
-    const { userInfo} = userRegister;
+    const { userInfo } = userRegister;
 
     const dispatch = useDispatch();
 
     const submitHandler = (e) => {
-        e.preventDefault();
-        if (Password !== ConfirmPassword) {
-            alert('Password and confirm password are not match');
-        } else {
-            dispatch(register(Name,Phonenumber, Email, Password));
-        }
+        // e.preventDefault();
+        // if (Password !== ConfirmPassword) {
+        //     alert('Password and confirm password are not match');
+        // } else {
+        //     dispatch(register(Name, Phonenumber, Email, Password));
+        // }
+
+        dispatch(register(name, email, phonenumber, password));
+
     };
+
     useEffect(() => {
         if (userInfo) {
             props.history.push(redirect);
@@ -126,7 +131,7 @@ function Register(props) {
         <div className={classes.root}>
             <Grid>
 
-                <Grid wrap="nowrap">
+                <Grid container wrap="nowrap">
                     <div >
                         <img height='100px' width='200px'
                             alt='logo'
@@ -135,56 +140,58 @@ function Register(props) {
                     </div>
                 </Grid>
 
-                <Grid className={classes.form} wrap="nowrap">
-                    <form onSubmit={submitHandler}>
+                <Grid container className={classes.form} wrap="nowrap">
+                    <form>
                         <Typography>Create Account</Typography>
 
-                        <Grid wrap="nowrap">
+                        <Grid container wrap="nowrap">
                             <TextField autoFocus size="small"
                                 className={classes.textfeild}
-                                id="outlined-basic" label="Name"
+                                id="name" label="Name"
                                 variant="outlined"
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </Grid>
 
-                        <Grid wrap="nowrap">
+                        <Grid container wrap="nowrap">
                             <TextField size="small"
                                 className={classes.textfeild}
-                                id="outlined-basic" label="Email"
+                                id="email" label="Email"
                                 variant="outlined"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </Grid>
 
 
-                        <Grid wrap="nowrap">
+                        <Grid container wrap="nowrap">
                             <TextField size="small"
                                 className={classes.textfeild}
-                                id="outlined-basic" label="Phone Number"
+                                id="mobile" label="Phone Number"
                                 variant="outlined"
                                 onChange={(e) => setPhonenumber(e.target.value)}
                             />
                         </Grid>
 
 
-                        <Grid wrap="nowrap">
+                        <Grid container wrap="nowrap">
                             <TextField size="small"
+                                autoComplete='true'
                                 type="password" className={classes.textfeild}
-                                id="outlined-basic" label="Password"
+                                id="password" label="Password"
                                 variant="outlined"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </Grid>
-
-                        <Grid wrap="nowrap">
+                        {/* 
+                        <Grid container wrap="nowrap">
                             <TextField size="small"
+                                autoComplete='true'
                                 type="password" className={classes.textfeild}
-                                id="outlined-basic" label="Confirm Password"
+                                id="cpassword" label="Confirm Password"
                                 variant="outlined"
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                             />
-                        </Grid>
+                        </Grid> */}
 
 
                         <Typography className={classes.h3}>We will send you a text to verify your phone.
@@ -192,8 +199,8 @@ function Register(props) {
                         </Typography>
 
 
-                        <Grid wrap="nowrap">
-                            <Button className={classes.button} onClick={() => submitHandler}>
+                        <Grid container wrap="nowrap">
+                            <Button className={classes.button} onClick={() => submitHandler()}>
                                 Continue
                             </Button>
                         </Grid>
@@ -203,7 +210,7 @@ function Register(props) {
 
                         <Typography>
                             Already have an account?
-                            <Link onClick={() => history.push('/login')}>
+                            <Link to='/login' onClick={() => history.push('/login')}>
                                 sign in
                             </Link>
                         </Typography>

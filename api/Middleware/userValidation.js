@@ -28,9 +28,6 @@ export const loginValidation = data => {
         email: Joi.string()
             .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
 
-        name: Joi.string()
-            .alphanum().min(4).max(30).required(),
-
         password: Joi.string()
             .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
     });
