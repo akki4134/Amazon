@@ -1,9 +1,13 @@
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { Link } from 'react-router-dom';
+// import { signin } from '../actions/userActions';
 
-import { makeStyles } from '@material-ui/core/styles';
-
-import Grid from '@material-ui/core/Grid';
-import { Button, Typography } from "@material-ui/core"
+import {
+    makeStyles,
+    Grid, Button,
+    Divider, Typography
+} from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,6 +20,14 @@ const useStyles = makeStyles((theme) => ({
     },
     form: {
         [theme.breakpoints.down('sm')]: {
+            flexGrow: 1,
+            alginitems: "center",
+            justifyContent: "center",
+            width: '70%',
+            padding: 20,
+            border: '0.5px solid',
+            borderColor: '#737373',
+            borderRadius: '5px',
 
         },
         [theme.breakpoints.up('md')]: {
@@ -27,14 +39,14 @@ const useStyles = makeStyles((theme) => ({
             width: '70%',
             padding: 20,
             border: '0.5px solid',
-            borderColor: '#737373',
+            borderColor: '#767676;',
             borderRadius: '5px',
         },
 
     },
     textfeild: {
         height: 30,
-        width: '80%',
+        width: '100%',
         margin: 5,
         borderRadius: '4px',
         border: '0.5px solid',
@@ -44,8 +56,18 @@ const useStyles = makeStyles((theme) => ({
             borderColor: '#e77600'
         },
     },
+    divider: {
+        width: 70,
+        marginRight: 15,
+        marginLeft: 15,
+    },
+    text: {
+        margin: '-10px',
+        color: '#767676'
+
+    },
     button: {
-        width: '80%',
+        width: '100%',
         margin: 5,
         textTransform: 'none',
         background: '#f0c14b',
@@ -58,10 +80,12 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     h2: {
+        fontSize: 15,
+        fontWeight: 500,
 
     },
     h3: {
-        fontSize: 15,
+        fontSize: 10,
         fontWeight: 500,
     },
     h4: {
@@ -69,10 +93,30 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Login() {
+function Login(props) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    // const redirect = props.location.search
+    //     ? props.location.search.split('=')[1]
+    //     : '/'
+
+    // const userSignin = useSelector((state) => state.userSignin);
+    // const { userInfo, loading, error } = userSignin
+
+    //  const dispatch = useDispatch();
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        //  dispatch(signin(email, password));
+    };
+
+    // useEffect(() => {
+    //     if (userInfo) {
+    //         props.history.push(redirect);
+    //     }
+    // }, [props.history, redirect, userInfo]);
 
     const classes = useStyles();
 
@@ -81,7 +125,7 @@ function Login() {
             <Grid>
 
                 <Grid wrap="nowrap">
-                    <div>
+                    <div >
                         <img height='100px' width='200px'
                             alt='logo'
                             src="http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"
@@ -90,7 +134,7 @@ function Login() {
                 </Grid>
 
                 <Grid className={classes.form} wrap="nowrap">
-                    <form>
+                    <form onSubmit={submitHandler}>
                         <Typography>Sign-In</Typography>
 
                         <input
@@ -113,15 +157,31 @@ function Login() {
                         ></input>
 
                         <Grid wrap="nowrap">
-                            <Button className={classes.button}>
+                            <Button className={classes.button} onClick={() => submitHandler}>
                                 Login
                             </Button>
                         </Grid>
 
-
                         <Typography className={classes.h3}>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</Typography>
                     </form>
                 </Grid>
+                <br />
+                <br />
+
+                <Grid container>
+                    <Divider className={classes.divider} />
+                    <Grid className={classes.text}>
+                        <Typography className={classes.h2}> New to Amazon?</Typography>
+                    </Grid>
+                    <Divider className={classes.divider} />
+                </Grid>
+
+                <br />
+                <br />
+                <Grid wrap="nowrap">
+                    <Button size="medium" variant="contained" >Create your Amazon account</Button>
+                </Grid>
+
             </Grid>
         </div>
     )
