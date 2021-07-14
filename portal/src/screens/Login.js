@@ -114,16 +114,6 @@ function Login(props) {
 
                     <Grid item>
                         <TextField size="small"
-                            autoComplete='true'
-                            type="password" className={classes.textfeild}
-                            id="password" label="Password"
-                            variant="outlined"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </Grid>
-
-                    <Grid item>
-                        <TextField size="small"
                             className={classes.textfeild}
                             id="email" label="Email"
                             variant="outlined"
@@ -131,6 +121,15 @@ function Login(props) {
                         />
                     </Grid>
 
+                    <Grid item>
+                        <TextField size="small"
+                            autoComplete='true'
+                            type="password" className={classes.textfeild}
+                            id="password" label="Password"
+                            variant="outlined"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Grid>
 
                     <Grid item>
                         <Button className={classes.button} onClick={() => submitHandler()}>
