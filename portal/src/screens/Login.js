@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
+
 // import { useDispatch, useSelector } from 'react-redux';
 // import { Link } from 'react-router-dom';
 // import { signin } from '../actions/userActions';
@@ -17,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
         display: "flex",
         justifyContent: "center",
+    },
+    body: {
+        justifyContent: "center",
+        alginitems: "center",
+        width: '32vw'
     },
     form: {
         [theme.breakpoints.down('sm')]: {
@@ -95,6 +102,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Login(props) {
 
+
+    let history = useHistory();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -122,7 +132,7 @@ function Login(props) {
 
     return (
         <div className={classes.root}>
-            <Grid>
+            <Grid className={classes.body} >
 
                 <Grid wrap="nowrap">
                     <div >
@@ -179,7 +189,7 @@ function Login(props) {
                 <br />
                 <br />
                 <Grid wrap="nowrap">
-                    <Button size="medium" variant="contained" >Create your Amazon account</Button>
+                    <Button variant="contained" onClick={() => history.push('/register')} >Create your Amazon account</Button>
                 </Grid>
 
             </Grid>
