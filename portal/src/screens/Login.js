@@ -20,48 +20,14 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
     },
-    body: {
-        justifyContent: "center",
-        alginitems: "center",
-        width: '32vw'
-    },
     form: {
-        [theme.breakpoints.down('sm')]: {
-            flexGrow: 1,
-            alginitems: "center",
-            justifyContent: "center",
-            width: '70%',
-            padding: 20,
-            border: '0.5px solid',
-            borderColor: '#737373',
-            borderRadius: '5px',
-
-        },
-        [theme.breakpoints.up('md')]: {
-        },
-        [theme.breakpoints.up('lg')]: {
-            flexGrow: 1,
-            alginitems: "center",
-            justifyContent: "center",
-            width: '70%',
-            padding: 20,
-            border: '0.5px solid',
-            borderColor: '#767676;',
-            borderRadius: '5px',
-        },
-
+        padding: 20,
+        border: '0.5px solid',
+        borderColor: '#767676;',
+        borderRadius: '5px',
     },
     textfeild: {
-        height: 30,
-        width: '100%',
-        margin: 5,
-        borderRadius: '4px',
-        border: '0.5px solid',
-        borderColor: '#737373',
-        '&:focus': {
-            boxShadow: '0 0 3px 2px rgb(228 121 17 / 50%)',
-            borderColor: '#e77600'
-        },
+        margin: 10,
     },
     divider: {
         width: 70,
@@ -94,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
     h3: {
         fontSize: 10,
         fontWeight: 500,
+        marginLeft: 50
     },
     h4: {
 
@@ -132,20 +99,77 @@ function Login(props) {
 
     return (
         <div className={classes.root}>
-            <Grid className={classes.body} >
 
-                <Grid container wrap="nowrap">
-                    <div >
-                        <img height='100px' width='200px'
-                            alt='logo'
-                            src="http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"
-                        />
-                    </div>
+            <Grid>
+                <Grid onClick={() => history.push('/')} style={{ marginLeft: '50px' }} item>
+                    <img height='100px' width='200px'
+                        alt='logo'
+                        src="http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"
+                    />
                 </Grid>
 
-                <Grid className={classes.form} wrap="nowrap">
-                    <form onSubmit={submitHandler}>
-                        <Typography>Sign-In</Typography>
+                <form onSubmit={submitHandler} className={classes.form}>
+
+                    <Typography className={classes.h2} > Sign-In </Typography>
+
+                    <Grid item>
+                        <TextField size="small"
+                            autoComplete='true'
+                            type="password" className={classes.textfeild}
+                            id="password" label="Password"
+                            variant="outlined"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Grid>
+
+                    <Grid item>
+                        <TextField size="small"
+                            className={classes.textfeild}
+                            id="email" label="Email"
+                            variant="outlined"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </Grid>
+
+
+                    <Grid item>
+                        <Button className={classes.button} onClick={() => submitHandler()}>
+                            Login
+                        </Button>
+                    </Grid>
+
+
+                    <Typography className={classes.h3}>
+                        By continuing, you agree to Amazon's
+                    </Typography>
+
+                    <Typography className={classes.h3}>
+                        Conditions of Use and Privacy Notice.
+                    </Typography>
+
+
+                </form>
+                <br />
+
+                <Grid container>
+                    <Divider className={classes.divider} />
+                    <Grid className={classes.text}>
+                        <Typography className={classes.h2}> New to Amazon?</Typography>
+                    </Grid>
+                    <Divider className={classes.divider} />
+                </Grid>
+                <br />
+
+                <Button variant="contained" style={{ textTransform: 'none', marginLeft: '30px' }} onClick={() => history.push('/register')} >Create your Amazon account</Button>
+
+
+
+            </Grid>
+
+
+            {/* <Grid className={classes.form} wrap="nowrap">
+                    <form >
+                        <Typography></Typography>
 
 
                         <Grid container wrap="nowrap">
@@ -175,26 +199,10 @@ function Login(props) {
 
                         <Typography className={classes.h3}>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</Typography>
                     </form>
-                </Grid>
-                <br />
-                <br />
-
-                <Grid container>
-                    <Divider className={classes.divider} />
-                    <Grid className={classes.text}>
-                        <Typography className={classes.h2}> New to Amazon?</Typography>
-                    </Grid>
-                    <Divider className={classes.divider} />
-                </Grid>
-
-                <br />
-                <br />
-                <Grid container wrap="nowrap">
-                    <Button variant="contained" onClick={() => history.push('/register')} >Create your Amazon account</Button>
-                </Grid>
-
-            </Grid>
-        </div>
+                </Grid> */}
+            <br />
+            <br />
+        </div >
     )
 }
 

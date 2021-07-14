@@ -168,6 +168,7 @@ const HomeContent = () => {
                     <div className="home__column col-lg-3 col-sm-6 col-md-6">
                         <div className="col">
                             <div className="home__row">
+                                
                                 <div className="header_text">
                                     Sign in for your best experience
                                 </div>

@@ -22,44 +22,18 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
     },
     form: {
-        [theme.breakpoints.down('sm')]: {
-            flexGrow: 1,
-            alginitems: "center",
-            justifyContent: "center",
-            width: '70%',
-            padding: 20,
-            border: '0.5px solid',
-            borderColor: '#737373',
-            borderRadius: '5px',
-
-        },
-        [theme.breakpoints.up('md')]: {
-        },
-        [theme.breakpoints.up('lg')]: {
-            flexGrow: 1,
-            alginitems: "center",
-            justifyContent: "center",
-            width: '80%',
-            padding: 20,
-            border: '0.5px solid',
-            borderColor: '#767676;',
-            borderRadius: '5px',
-        },
-
+        padding: 20,
+        border: '0.5px solid',
+        borderColor: '#767676;',
+        borderRadius: '5px',
     },
     textfeild: {
         margin: 10,
-
     },
     divider: {
         width: 70,
         marginRight: 15,
         marginLeft: 15,
-    },
-    text: {
-        margin: '-10px',
-        color: '#767676'
-
     },
     button: {
         width: '100%',
@@ -76,12 +50,14 @@ const useStyles = makeStyles((theme) => ({
     },
     h2: {
         fontSize: 15,
-        fontWeight: 500,
+        fontWeight: 800,
+        margin: 5,
 
     },
     h3: {
         fontSize: 10,
         fontWeight: 500,
+        marginLeft: 15,
     },
     h4: {
 
@@ -129,93 +105,80 @@ function Register(props) {
 
     return (
         <div className={classes.root}>
-            <Grid>
 
-                <Grid container wrap="nowrap">
-                    <div >
-                        <img height='100px' width='200px'
-                            alt='logo'
-                            src="http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"
-                        />
-                    </div>
+            <Grid >
+                <Grid onClick={() => history.push('/')} style={{ marginLeft: '50px' }} item>
+                    <img height='100px' width='200px'
+                        alt='logo'
+                        src="http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"
+                    />
                 </Grid>
+                <form className={classes.form}>
 
-                <Grid container className={classes.form} wrap="nowrap">
-                    <form>
-                        <Typography>Create Account</Typography>
+                    <Typography className={classes.h2} > Create Account</Typography>
 
-                        <Grid container wrap="nowrap">
-                            <TextField autoFocus size="small"
-                                className={classes.textfeild}
-                                id="name" label="Name"
-                                variant="outlined"
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </Grid>
+                    <Grid item>
+                        <TextField autoFocus size="small"
+                            className={classes.textfeild}
+                            id="name" label="Name"
+                            variant="outlined"
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField size="small"
+                            className={classes.textfeild}
+                            id="email" label="Email"
+                            variant="outlined"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField size="small"
+                            className={classes.textfeild}
+                            id="mobile" label="Phone Number"
+                            variant="outlined"
+                            onChange={(e) => setPhonenumber(e.target.value)}
+                        />
 
-                        <Grid container wrap="nowrap">
-                            <TextField size="small"
-                                className={classes.textfeild}
-                                id="email" label="Email"
-                                variant="outlined"
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <TextField size="small"
+                            autoComplete='true'
+                            type="password" className={classes.textfeild}
+                            id="password" label="Password"
+                            variant="outlined"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Grid>
 
-
-                        <Grid container wrap="nowrap">
-                            <TextField size="small"
-                                className={classes.textfeild}
-                                id="mobile" label="Phone Number"
-                                variant="outlined"
-                                onChange={(e) => setPhonenumber(e.target.value)}
-                            />
-                        </Grid>
-
-
-                        <Grid container wrap="nowrap">
-                            <TextField size="small"
-                                autoComplete='true'
-                                type="password" className={classes.textfeild}
-                                id="password" label="Password"
-                                variant="outlined"
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </Grid>
-                        {/* 
-                        <Grid container wrap="nowrap">
-                            <TextField size="small"
-                                autoComplete='true'
-                                type="password" className={classes.textfeild}
-                                id="cpassword" label="Confirm Password"
-                                variant="outlined"
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                            />
-                        </Grid> */}
-
-
-                        <Typography className={classes.h3}>We will send you a text to verify your phone.
+                    <Grid item>
+                        <Typography className={classes.h3}>
+                            We will send you a text to verify your phone.
+                        </Typography>
+                        <Typography className={classes.h3}>
                             Message and Data rates may apply.
                         </Typography>
+                    </Grid>
 
+                    <Grid item>
+                        <Button className={classes.button} onClick={() => submitHandler()}>
+                            Continue
+                        </Button>
+                    </Grid>
+                    <br />
+                    <Divider />
+                    <br />
 
-                        <Grid container wrap="nowrap">
-                            <Button className={classes.button} onClick={() => submitHandler()}>
-                                Continue
-                            </Button>
-                        </Grid>
-
-                        <br />
-                        <Divider />
-
+                    <Grid item>
                         <Typography>
                             Already have an account?
                             <Link to='/login' onClick={() => history.push('/login')}>
                                 sign in
                             </Link>
                         </Typography>
-                    </form>
-                </Grid>
+                    </Grid>
+                </form>
             </Grid>
         </div >
     )

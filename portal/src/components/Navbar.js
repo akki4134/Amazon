@@ -75,26 +75,36 @@ const useStyles = makeStyles((theme) => ({
     },
     search: {
         [theme.breakpoints.only('xs')]: {
+            backgroundColor:'#fff',
+            borderRadius:5,
             position: 'absolute',
             marginLeft: 120,
             width: 'auto',
         },
         [theme.breakpoints.only('sm')]: {
+            backgroundColor:'#fff',
+            borderRadius:5,
             position: 'relative',
             width: 'auto',
         },
         [theme.breakpoints.only('md')]: {
             position: 'relative',
+            borderRadius:5,
+            backgroundColor:'#fff',
             width: 550,
             maxWidth: 550,
         },
         [theme.breakpoints.only('lg')]: {
             position: 'relative',
+            borderRadius:5,
+            backgroundColor:'#fff',
             width: 750,
             maxWidth: 850,
         },
         [theme.breakpoints.only('xl')]: {
             position: 'relative',
+            borderRadius:5,
+            backgroundColor:'#fff',
             width: 1300,
             maxWidth: 1300,
         },
