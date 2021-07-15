@@ -73,7 +73,7 @@ userRouter.post(
 
         try {
             const createdUser = await user.save();
-            res.send({
+            res.status(200).send({
                 _id: createdUser._id,
                 name: createdUser.name,
                 email: createdUser.email,

@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 import userRoute from './Routes/userRoute.js'
+import departmentRoute from './Routes/departmentRoute.js'
 
 const app = express()
 
@@ -10,8 +11,7 @@ const app = express()
 dotenv.config();
 
 app.use(express.json()) // to send post request
-app.use(express.urlencoded({extended:true}))
-
+app.use(express.urlencoded({ extended: true }))
 
 //connect Database
 mongoose.connect(process.env.DB_CONNECTION, {
@@ -30,17 +30,16 @@ db.on('error', err => {
     console.error('Mongo connection error')
 })
 
-
 //Route middleware
 app.use('/api/user', userRoute)
+app.use('/api/department', departmentRoute)
 
-app.get('/test', (req, res)=>{
+app.get('/test', (req, res) => {
     res.send('server is ready')
 })
 
 app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
-  });
-
+});
 
 app.listen(4000, () => console.log("server connected"))

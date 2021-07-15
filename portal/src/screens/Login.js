@@ -160,47 +160,7 @@ function Login(props) {
                 <br />
 
                 <Button variant="contained" style={{ textTransform: 'none', marginLeft: '30px' }} onClick={() => history.push('/register')} >Create your Amazon account</Button>
-
-
-
             </Grid>
-
-
-            {/* <Grid className={classes.form} wrap="nowrap">
-                    <form >
-                        <Typography></Typography>
-
-
-                        <Grid container wrap="nowrap">
-                            <TextField size="small"
-                                className={classes.textfeild}
-                                id="email" label="Email"
-                                variant="outlined"
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                        </Grid>
-
-
-                        <Grid container wrap="nowrap">
-                            <TextField size="small"
-                                autoComplete='true'
-                                type="password" className={classes.textfeild}
-                                id="password" label="Password"
-                                variant="outlined"
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid container wrap="nowrap">
-                            <Button className={classes.button} onClick={() => submitHandler}>
-                                Login
-                            </Button>
-                        </Grid>
-
-                        <Typography className={classes.h3}>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</Typography>
-                    </form>
-                </Grid> */}
-            <br />
-            <br />
         </div >
     )
 }

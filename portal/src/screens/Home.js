@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 import './styles/Home.css'
 import HomeContent from './HomeContent'
+// import ErrorContent from './Error'
 
 import Navbar from '../components/Navbar'
 
@@ -14,7 +15,7 @@ const Home = () => {
     function AlertDismissibleExample() {
 
         useEffect(() => {
-            setTimeout(() => { setShow(false) }, 200);
+            setTimeout(() => { setShow(false) }, 800);
         }, [])
 
         const [show, setShow] = useState(true);
@@ -36,6 +37,7 @@ const Home = () => {
             {AlertDismissibleExample()}
             <Navbar />
             <HomeContent />
+            {/* <ErrorContent /> */}
             <Footer />
         </div>
     )

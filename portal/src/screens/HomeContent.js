@@ -6,7 +6,10 @@ import Button from 'react-bootstrap/Button'
 import Slider from '../components/Slider'
 import { useHistory } from 'react-router-dom'
 
-const HomeContent = () => {
+// import ProductScreen from './Products'
+
+
+function HomeContent() {
 
     let history = useHistory();
 
@@ -20,52 +23,56 @@ const HomeContent = () => {
             <div className="container-fluid">
                 <Row>
                     <Col lg={3} md={6} sm={6} >
+
                         <div className="home__row">
 
                             <div className="header_text">
-                                Book tickets for essential travel
+                                Styles for Men | Up to 60% off
                             </div>
 
                             <div className="row">
                                 <div className="col">
                                     <img className="img-thumbnail"
-                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Flight_PC_QC_372x232._SY232_CB656565308_.jpg"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/1-min._SY232_CB666463578_.jpg"
                                         alt=""
                                     />
-                                    <p>Flight ticket</p>
-
+                                    <p> Men's Clothing </p>
                                 </div>
+
                                 <div className="col">
                                     <img className="img-thumbnail"
-                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Bus_PC_QC_372x232._SY232_CB656565308_.jpg"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/2-min._SY232_CB666463578_.jpg"
                                         alt=""
                                     />
-                                    <p>Bus ticket</p>
+                                    <p>Footwear</p>
                                 </div>
+
                             </div>
                             <div className="row">
                                 <div className="col">
                                     <img className="img-thumbnail"
-                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Flight_PC_QC_372x232._SY232_CB656565308_.jpg"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/4-min._SY232_CB666463578_.jpg"
                                         alt=""
                                     />
-                                    <p>Train ticket</p>
-
+                                    <p> Watches</p>
                                 </div>
+
                                 <div className="col">
                                     <img className="img-thumbnail"
-                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Bus_PC_QC_372x232._SY232_CB656565308_.jpg"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/3-min._SY232_CB666463578_.jpg"
                                         alt=""
                                     />
-                                    <p>Essencial Travel Products</p>
+                                    <p>Bags & Luggage</p>
                                 </div>
 
                             </div>
 
                             <div>
-                                Explore more from Amazon Pay
+                                View all Offers
                             </div>
                         </div>
+
+
                     </Col>
 
                     <Col lg={3} md={6} sm={6} >
@@ -168,7 +175,7 @@ const HomeContent = () => {
                     <div className="home__column col-lg-3 col-sm-6 col-md-6">
                         <div className="col">
                             <div className="home__row">
-                                
+
                                 <div className="header_text">
                                     Sign in for your best experience
                                 </div>
@@ -191,54 +198,54 @@ const HomeContent = () => {
                 <Row>
                     <Col lg={3} md={6} sm={6} >
 
+
                         <div className="home__row">
 
                             <div className="header_text">
-                                Styles for Men | Up to 60% off
+                                Book tickets for essential travel
                             </div>
 
                             <div className="row">
                                 <div className="col">
                                     <img className="img-thumbnail"
-                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/1-min._SY232_CB666463578_.jpg"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Flight_PC_QC_372x232._SY232_CB656565308_.jpg"
                                         alt=""
                                     />
-                                    <p> Men's Clothing </p>
-                                </div>
+                                    <p>Flight ticket</p>
 
+                                </div>
                                 <div className="col">
                                     <img className="img-thumbnail"
-                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/2-min._SY232_CB666463578_.jpg"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Bus_PC_QC_372x232._SY232_CB656565308_.jpg"
                                         alt=""
                                     />
-                                    <p>Footwear</p>
+                                    <p>Bus ticket</p>
                                 </div>
-
                             </div>
                             <div className="row">
-
                                 <div className="col">
                                     <img className="img-thumbnail"
-                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/4-min._SY232_CB666463578_.jpg"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Flight_PC_QC_372x232._SY232_CB656565308_.jpg"
                                         alt=""
                                     />
-                                    <p> Watches</p>
+                                    <p>Train ticket</p>
+
                                 </div>
-
                                 <div className="col">
                                     <img className="img-thumbnail"
-                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/3-min._SY232_CB666463578_.jpg"
+                                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Acko/Travel/Bus_PC_QC_372x232._SY232_CB656565308_.jpg"
                                         alt=""
                                     />
-                                    <p>Bags & Luggage</p>
+                                    <p>Essencial Travel Products</p>
                                 </div>
 
                             </div>
 
                             <div>
-                                View all Offers
+                                Explore more from Amazon Pay
                             </div>
                         </div>
+
                     </Col>
 
                     <Col>

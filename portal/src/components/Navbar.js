@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
             fontSize: 30,
         },
         [theme.breakpoints.up('sm')]: {
-            fontSize: 30,
+            display: "none"
         },
         [theme.breakpoints.up('md')]: {
             display: "none"
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
             borderColor: '#fff',
             cursor: 'pointer',
             borderRadius: '2px',
-            paddingLeft:-20,
+            paddingLeft: -20,
         }
     },
     title: {
@@ -46,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
+        },
+        [theme.breakpoints.down('md')]: {
+            fontSize: 8,
+            fontWeight: 550,
+            color: '#cccccc',
         },
         [theme.breakpoints.up('md')]: {
             fontSize: 10,
@@ -64,6 +69,10 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
+        [theme.breakpoints.down('md')]: {
+            fontSize: 10,
+            fontWeight: 600,
+        },
         [theme.breakpoints.up('md')]: {
             fontSize: 12,
             fontWeight: 600,
@@ -75,36 +84,36 @@ const useStyles = makeStyles((theme) => ({
     },
     search: {
         [theme.breakpoints.only('xs')]: {
-            backgroundColor:'#fff',
-            borderRadius:5,
+            backgroundColor: '#fff',
+            borderRadius: 5,
             position: 'absolute',
             marginLeft: 120,
             width: 'auto',
         },
         [theme.breakpoints.only('sm')]: {
-            backgroundColor:'#fff',
-            borderRadius:5,
+            backgroundColor: '#fff',
+            borderRadius: 5,
             position: 'relative',
             width: 'auto',
         },
         [theme.breakpoints.only('md')]: {
             position: 'relative',
-            borderRadius:5,
-            backgroundColor:'#fff',
+            borderRadius: 5,
+            backgroundColor: '#fff',
             width: 550,
             maxWidth: 550,
         },
         [theme.breakpoints.only('lg')]: {
             position: 'relative',
-            borderRadius:5,
-            backgroundColor:'#fff',
+            borderRadius: 5,
+            backgroundColor: '#fff',
             width: 750,
             maxWidth: 850,
         },
         [theme.breakpoints.only('xl')]: {
             position: 'relative',
-            borderRadius:5,
-            backgroundColor:'#fff',
+            borderRadius: 5,
+            backgroundColor: '#fff',
             width: 1300,
             maxWidth: 1300,
         },
