@@ -15,11 +15,13 @@ function Error() {
 
     const [data, setdata] = useState([])
 
+    const fetch = async () => {
+        const item = await axios.get('/api/department/all')
+        setdata(item.data)
+    }
+
     useEffect(() => {
-        const fetch = async () => {
-            const item = await axios.get('/api/department/all')
-            setdata(item.data)
-        }
+
         fetch()
 
     }, [])
@@ -32,17 +34,20 @@ function Error() {
 
             <Grid container>
                 <Grid item>
-                    {/* {data.map(context => {
-                        return (
-                           context.deptname      
-                        )
-                    })} */}
-                    {data[0].deptcategories.map(a=>{
+
+                    {/* {data[0].deptcategories.map(a=>{
                         return(
                             a.cataname
                         )
+                    })} */} 
+
+                    {data.map(a => {
+                        return (
+                            a.deptname
+                        )
                     })}
 
+                    {data[0].deptname}
                     {console.log(data)}
 
                 </Grid>

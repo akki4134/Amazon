@@ -43,7 +43,7 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Wireless/Samsung/SamsungM/MSD_2/Family/D23416955_MSD_IN_WLME_May_Samsung_Family_DesktopTallHero_3000x1200._CB668854785_.jpg"
+            src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG19/Furniture/Herotator/WFH/Offer/V2/WFH-Herotator-hero_3000x1200._CB405299567_.jpg"
             alt=""
           />
         </SwiperSlide>
