@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import './styles/Home.css'
-import HomeContent from './HomeContent'
+import HomeContent from './HomeGrid'
 // import ErrorContent from './Error'
 
 import Navbar from '../components/Navbar'

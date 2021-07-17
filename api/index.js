@@ -3,7 +3,9 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 import userRoute from './Routes/userRoute.js'
+import productRoute from './Routes/productRoute.js'
 import departmentRoute from './Routes/departmentRoute.js'
+
 
 const app = express()
 
@@ -32,7 +34,9 @@ db.on('error', err => {
 
 //Route middleware
 app.use('/api/user', userRoute)
+app.use('/api/product', productRoute )
 app.use('/api/department', departmentRoute)
+
 
 app.get('/test', (req, res) => {
     res.send('server is ready')

@@ -41,13 +41,12 @@ function Error() {
                         )
                     })} */} 
 
-                    {data.map(a => {
+                    {/* {data.map(a => {
                         return (
                             a.deptname
                         )
-                    })}
+                    })} */}
 
-                    {data[0].deptname}
                     {console.log(data)}
 
                 </Grid>

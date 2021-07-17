@@ -64,15 +64,11 @@ function HomeContent() {
                                     />
                                     <p>Bags & Luggage</p>
                                 </div>
-
                             </div>
-
                             <div>
                                 View all Offers
                             </div>
                         </div>
-
-
                     </Col>
 
                     <Col lg={3} md={6} sm={6} >

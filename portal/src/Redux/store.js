@@ -37,7 +37,10 @@ import {
   // userUpdateProfileReducer,
   // userUpdateReducer,
 } from '../Redux/Reducers/userReducer';
+import {
+  departmentListReducer
 
+} from '../Redux/Reducers/departmentReducer'
 
 const initialState = {
   userLogin: {
@@ -51,6 +54,7 @@ const reducer = combineReducers({
   //   productList: productListReducer,
   //   productDetails: productDetailsReducer,
   //   cart: cartReducer,
+  departmentList :departmentListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   //   orderCreate: orderCreateReducer,
