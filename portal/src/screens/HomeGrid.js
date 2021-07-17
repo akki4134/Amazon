@@ -5,8 +5,10 @@ import {
 } from "@material-ui/core"
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react"
-import { listDepartments } from "../Redux/Actions/departmentAction";
+import { useState, useEffect } from "react"
+
+//import { listDepartments } from "../Redux/Actions/departmentAction";
+import { listProducts } from '../Redux/Actions/productAction'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,27 +16,39 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-function HomeGrid() {
+function HomeGrid(props) {
     const classes = useStyles();
+
+    const dispatch = useDispatch();
+
+    const [category, setcategory] = useState('');
 
     // const [loading, setloading] = useState(false);
     // const [departments, setdepartments] = useState([]);
 
-    const dispatch = useDispatch();
-    const departmentList = useSelector((state) => state.departmentList);
-    const { departments, loading, error } = departmentList;
+
+    // const departmentList = useSelector((state) => state.departmentList);
+    // const { departments, loading, error } = departmentList;
 
 
-    useEffect(() => {
-        dispatch(listDepartments())
-    }, [dispatch])
+
+    const productList = useSelector((state) => state.productList);
+    const { products, loading, error } = productList;
+
+    // useEffect(() => {
+    //     dispatch(listProducts());
+    // }, [dispatch]);
+
+    const onSubmitHandler = (arg) => {
+        setcategory(arg)
+        dispatch(listProducts(category));
+    }
 
     return (
         <div className={classes.root}>
             <Grid container>
                 {loading ? (
                     <div>loading...</div>
-
                 ) : error ? (
                     <div>{error}</div>
                 ) : (
@@ -42,16 +56,15 @@ function HomeGrid() {
                         <Grid item lg={3} md={3} sm={12} xs={12}>
                             <Typography>  Styles for Men | Up to 70% off </Typography>
                             <Grid container nowrap="true">
-
-                                {departments.map((department) => (
+                                {/* {products.map((product) => (
                                     <Grid className={classes.items}
-                                        item key={department._id}>
-                                        {department.deptname}
-                                        <Grid>
-                                        {department.deptcategories.cataname}
-                                        </Grid>
+                                        item key={product._id}>
+                                        {product.name}
                                     </Grid>
-                                ))}
+                                ))} */}
+                                <div onClick={() => onSubmitHandler('shirts')}>
+                                    hbk
+                                </div>
 
                             </Grid>
                             <Grid container nowrap="true">

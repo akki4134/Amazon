@@ -57,6 +57,19 @@ Router.get(
         } catch (error) {
             res.status(400).send(error)
         }
+    })
+)
+
+Router.get(
+    '/:category',
+    expressAsyncHandler(async (req, res) => {
+        const Category = req.params.category
+        try {
+            const products = await Product.find({ category: Category })
+            res.status(200).send(products)
+        } catch (error) {
+            res.status(400).send(error)
+        }
 
     })
 )

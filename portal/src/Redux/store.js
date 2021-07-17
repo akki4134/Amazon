@@ -1,4 +1,3 @@
-
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk'
 
@@ -14,16 +13,15 @@ import thunk from 'redux-thunk'
 //   orderSummaryReducer,
 // } from './reducers/orderReducers';
 
-
-// import {
-//   productCategoryListReducer,
-//   productCreateReducer,
-//   productDeleteReducer,
-//   productDetailsReducer,
-//   productListReducer,
-//   productReviewCreateReducer,
-//   productUpdateReducer,
-// } from './reducers/productReducers';
+import {
+  //   productCategoryListReducer,
+  //   productCreateReducer,
+  //   productDeleteReducer,
+  //   productDetailsReducer,
+  productListReducer,
+  //   productReviewCreateReducer,
+  //   productUpdateReducer,
+} from '../Redux/Reducers/productReducer';
 
 
 import {
@@ -37,9 +35,9 @@ import {
   // userUpdateProfileReducer,
   // userUpdateReducer,
 } from '../Redux/Reducers/userReducer';
+
 import {
   departmentListReducer
-
 } from '../Redux/Reducers/departmentReducer'
 
 const initialState = {
@@ -51,10 +49,10 @@ const initialState = {
 };
 
 const reducer = combineReducers({
-  //   productList: productListReducer,
+  productList: productListReducer,
   //   productDetails: productDetailsReducer,
   //   cart: cartReducer,
-  departmentList :departmentListReducer,
+  departmentList: departmentListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   //   orderCreate: orderCreateReducer,
