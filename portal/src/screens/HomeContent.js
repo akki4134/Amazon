@@ -31,7 +31,16 @@ function HomeContent() {
                             </div>
 
                             <div className="row">
-                                <div className="col">
+                                <div onClick={()=> history.push({  pathname: '/products', state: 'shirts' })} className="col">
+                                    {/* <div className="col"> */}
+                                    {/* <Link to='/products'>
+                                        <img className="img-thumbnail"
+                                            src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/1-min._SY232_CB666463578_.jpg"
+                                            alt=""
+                                        />
+                                        <p> Men's Clothing </p>
+                                    </Link> */}
+
                                     <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/1-min._SY232_CB666463578_.jpg"
                                         alt=""
@@ -39,7 +48,7 @@ function HomeContent() {
                                     <p> Men's Clothing </p>
                                 </div>
 
-                                <div className="col">
+                                <div onClick={()=> history.push({  pathname: '/products', state: 'footwear' })}  className="col">
                                     <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/2-min._SY232_CB666463578_.jpg"
                                         alt=""

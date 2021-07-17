@@ -5,7 +5,7 @@ import {
 } from "@material-ui/core"
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 
 //import { listDepartments } from "../Redux/Actions/departmentAction";
 import { listProducts } from '../Redux/Actions/productAction'
@@ -21,7 +21,7 @@ function HomeGrid(props) {
 
     const dispatch = useDispatch();
 
-    const [category, setcategory] = useState('');
+    // const [category, setcategory] = useState('');
 
     // const [loading, setloading] = useState(false);
     // const [departments, setdepartments] = useState([]);
@@ -35,14 +35,14 @@ function HomeGrid(props) {
     const productList = useSelector((state) => state.productList);
     const { products, loading, error } = productList;
 
-    // useEffect(() => {
-    //     dispatch(listProducts());
-    // }, [dispatch]);
 
-    const onSubmitHandler = (arg) => {
-        setcategory(arg)
-        dispatch(listProducts(category));
-    }
+    useEffect(() => {
+        dispatch(listProducts());
+
+        return () => {
+            //
+        };
+    }, [dispatch]);
 
     return (
         <div className={classes.root}>
@@ -56,15 +56,13 @@ function HomeGrid(props) {
                         <Grid item lg={3} md={3} sm={12} xs={12}>
                             <Typography>  Styles for Men | Up to 70% off </Typography>
                             <Grid container nowrap="true">
-                                {/* {products.map((product) => (
+                                {products.map((product) => (
                                     <Grid className={classes.items}
                                         item key={product._id}>
                                         {product.name}
                                     </Grid>
-                                ))} */}
-                                <div onClick={() => onSubmitHandler('shirts')}>
-                                    hbk
-                                </div>
+                                ))}
+                          
 
                             </Grid>
                             <Grid container nowrap="true">

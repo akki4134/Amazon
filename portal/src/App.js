@@ -23,7 +23,7 @@ function App() {
 
         <Route path='/error' component={ErrorScreen} />
 
-        <Route path='/products/:id' component={ProductScreen} />
+        <Route path='/products/' component={ProductScreen} />
         <Route path='/productdetails/:id' component={ProductDetailsScreen} />
 
         <Route path='/adminHome' component={AdminHomeScreen} />
