@@ -45,7 +45,6 @@ function Products(props) {
                                 {product.brand}
                             </div>
                         </div>
-
                     ))}
                 </div>
             )}
