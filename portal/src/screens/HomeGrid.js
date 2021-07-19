@@ -62,7 +62,7 @@ function HomeGrid(props) {
                                         {product.name}
                                     </Grid>
                                 ))}
-                          
+
 
                             </Grid>
                             <Grid container nowrap="true">

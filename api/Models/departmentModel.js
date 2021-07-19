@@ -1,17 +1,21 @@
 import mongoose from 'mongoose'
 
 const departmentSchema = new mongoose.Schema(
-    
-    {
-        deptname: { type: String, required: true, unique: true },
-        deptimage: { type: String, required: true },
-        deptcategories: [{
-            cataname: { type: String, required: true },
-            cataimage: { type: String, required: true },
-            catadescription: { type: String, required: true },
-        }],
-        deptdescription: { type: String, required: true },
 
+    {
+        name: { type: String, required: true, unique: true },
+        image: { type: String, required: true },
+        categories: [{
+            name: { type: String, required: true },
+            image: { type: String, required: true },
+            description: { type: String, required: true },
+            subcategories: [{
+                name: { type: String, required: true },
+                image: { type: String, required: true },
+                description: { type: String, required: true },
+            }]
+        }],
+        description: { type: String, required: true },
     },
     {
         timestamps: true,
