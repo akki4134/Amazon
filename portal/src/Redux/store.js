@@ -17,7 +17,7 @@ import {
   //   productCategoryListReducer,
   //   productCreateReducer,
   //   productDeleteReducer,
-  //   productDetailsReducer,
+  productDetailsReducer,
   productListReducer,
   //   productReviewCreateReducer,
   //   productUpdateReducer,
@@ -50,7 +50,7 @@ const initialState = {
 
 const reducer = combineReducers({
   productList: productListReducer,
-  //   productDetails: productDetailsReducer,
+  productDetails: productDetailsReducer,
   //   cart: cartReducer,
   departmentList: departmentListReducer,
   userLogin: userLoginReducer,
@@ -85,6 +85,5 @@ const store = createStore(
   initialState,
   composeEnhancer(applyMiddleware(thunk))
 );
-
 
 export default store;

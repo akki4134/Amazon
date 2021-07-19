@@ -9,6 +9,8 @@ import {
 
 import { IoMenu, } from 'react-icons/io5'
 
+import { useHistory } from 'react-router-dom'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -135,6 +137,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Navigation = () => {
 
+    const history = useHistory()
+
     const classes = useStyles();
 
     return (
@@ -148,6 +152,7 @@ const Navigation = () => {
                     </div>
 
                     <img
+                        onClick={() => history.push('/')}
                         className="header__logo" alt='logo'
                         src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
                     />

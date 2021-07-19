@@ -50,7 +50,6 @@ Router.put(
 Router.get(
     '/all',
     expressAsyncHandler(async (req, res) => {
-
         try {
             const products = await Product.find()
             res.status(200).send(products)
@@ -75,7 +74,7 @@ Router.get(
 )
 
 Router.get(
-    '/:id',
+    '/details/:id',
     expressAsyncHandler(async (req, res) => {
 
         try {
