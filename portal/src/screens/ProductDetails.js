@@ -75,8 +75,8 @@ function ProductDetails(props) {
 
     const productDetails = useSelector((state) => state.productDetails);
     const { product, loading, error } = productDetails;
-    const [quantity, setQuantity] = useState('1');
-    console.log(product)
+    const [quantity, setQuantity] = useState('1')
+    
     useEffect(() => {
         dispatch(detailsProduct(props.match.params.id));
         return () => {
