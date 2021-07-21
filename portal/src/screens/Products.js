@@ -6,11 +6,15 @@ import { useHistory } from 'react-router-dom';
 
 //import { listDepartments } from "../Redux/Actions/departmentAction";
 import { listProducts } from '../Redux/Actions/productAction'
+//import { addToCart } from '../Redux/Actions/cartAction';
+
 import {
     Grid,
     Typography,
     makeStyles,
+  //  Button,
 } from '@material-ui/core';
+
 
 // import ProductDetails from './ProductDetails';
 
@@ -24,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 20,
     },
     form: {
-        margin:10,
+        margin: 10,
         padding: 20,
         border: '0.5px solid',
         borderColor: '#767676;',
@@ -38,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
 
     button: {
         margin: 5,
-        width: 200,
         textTransform: 'none',
         background: '#f0c14b',
         color: '#000',
@@ -47,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
             border: '0.5px solid',
             borderColor: '#737373',
         }
-
     },
 
     h2: {
@@ -70,13 +72,26 @@ function Products(props) {
 
     const productList = useSelector((state) => state.productList);
     const { products, loading, error } = productList;
+    // const [quantity, setQuantity] = useState('1')
+    // const [productId, setProductId] = useState()
 
+    // const countInStock = 10
 
     useEffect(() => {
         dispatch(listProducts(props.location.state));
         return () => {
         };
     }, [dispatch, props.location.state]);
+
+
+
+
+    // const addToCartHandler = () => {
+    
+    //      dispatch(addToCart(productId, quantity))
+    // }
+
+
 
     return (
         <div>
@@ -88,13 +103,29 @@ function Products(props) {
                 <div>
                     <Grid className={classes.root} container>
                         {products.map((product) => (
-                            <Grid className={classes.form} item onClick={() => history.push('/productdetails/id/' + product._id)} key={product._id}>
-                                <Grid container>
-                                    <img height='200px' width='200px' src={product.image} alt={product.description} />
+                            <Grid className={classes.form} key={product._id}>
+
+                                <Grid item onClick={() => history.push('/productdetails/id/' + product._id)}>
+                                    <Grid container>
+                                        <img height='200px' width='200px' src={product.image} alt={product.description} />
+                                    </Grid>
+                                    <Typography>  {product.name}</Typography>
+                                    <Typography>  {product.brand}</Typography>
+                                    <Typography>  Price : ₹ {product.price}</Typography>
                                 </Grid>
-                                <Typography>  {product.name}</Typography>
-                                <Typography>  {product.brand}</Typography>
-                                <Typography>  Price : ₹ {product.price}</Typography>
+
+                                {/* <select onChange={(e) => setQuantity(e.target.value)}>
+                                    {[...Array(countInStock).keys()].map(
+                                        (x) => (
+                                            <option key={x + 1} value={x + 1}>
+                                                {x + 1}
+                                            </option>
+                                        )
+                                    )}
+                                </select>
+
+                                <Button onClick={addToCartHandler} className={classes.button} variant="contained"> Add to Cart</Button> */}
+                          
                             </Grid>
                         ))}
                     </Grid>

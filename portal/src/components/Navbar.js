@@ -5,9 +5,12 @@ import {
     Typography,
     InputBase,
     makeStyles,
+    Badge,
 } from '@material-ui/core';
 
+import { IconContext } from 'react-icons'
 import { IoMenu, } from 'react-icons/io5'
+import { GrCart } from "react-icons/gr"
 
 import { useHistory } from 'react-router-dom'
 
@@ -129,7 +132,8 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    inputInput: {
+    cart: {
+        color: 'pink'
 
     },
 }));
@@ -185,11 +189,20 @@ const Navigation = () => {
                             & Orders
                         </Typography>
                     </div>
-                    <div className={classes.maintitle}>
-                        <Typography className={classes.subtitle} variant="h6">
-                            Cart
-                        </Typography>
+                    <div onClick={() => history.push('/cart')} className={classes.maintitle}>
+                        {/* <Badge badgeContent={4}>
+
+                        </Badge> */}
+
+
+                        {/* <IconContext.Provider value={{ style: { color: "#fff" } }}>
+                         
+                        </IconContext.Provider>
+                       */}
                     </div>
+                    <GrCart size={35} style={{ fill: 'pink' }} />
+
+
                 </Toolbar>
             </AppBar>
         </div>

@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react"
 
-//import { listDepartments } from "../Redux/Actions/departmentAction";
+
+import { addToCart } from '../Redux/Actions/cartAction';
+
 import { detailsProduct } from '../Redux/Actions/productAction'
 import {
     Grid,
@@ -102,7 +104,10 @@ function ProductDetails(props) {
     }, [dispatch, productId]);
 
     const addToCartHandler =()=>{
-        props.history.push(`/cart/${productId}?quantity=${quantity}`)
+     
+        dispatch(addToCart(productId, quantity))
+       
+       // props.history.push(`/cart/${productId}?quantity=${quantity}`)
     }
 
     return (
