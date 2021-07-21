@@ -11,7 +11,7 @@ import {
 import { IoMenu, } from 'react-icons/io5'
 import { FaCartPlus } from "react-icons/fa"
 
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
 
@@ -144,6 +144,9 @@ const Navigation = () => {
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart
 
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
     const history = useHistory()
 
     const classes = useStyles();
@@ -176,9 +179,23 @@ const Navigation = () => {
                     <InputBase className={classes.search} />
 
                     <div className={classes.maintitle}>
-                        <Typography className={classes.title} variant="h6">
-                            Hello,Sign In
-                        </Typography>
+
+                        {userInfo ?
+
+                            <Typography className={classes.title} variant="h6">
+                                Hello {userInfo.name}
+                            </Typography>
+                            :
+                            <Typography className={classes.title} variant="h6">
+                                <Link to='login'>
+                                    Hello,Sign In
+                                </Link>
+
+                            </Typography>
+
+                        }
+
+
                         <Typography className={classes.subtitle} variant="h6">
                             Account & List
                         </Typography>
@@ -193,11 +210,11 @@ const Navigation = () => {
                         </Typography>
                     </div>
                     <div onClick={() => history.push('/cart')} className={classes.maintitle}>
-                       
-                            <Badge badgeContent={cartItems.length} color="primary">
-                                <FaCartPlus className={classes.cart} />
-                            </Badge>
-                     
+
+                        <Badge badgeContent={cartItems.length} color="primary">
+                            <FaCartPlus className={classes.cart} />
+                        </Badge>
+
                     </div>
 
 
