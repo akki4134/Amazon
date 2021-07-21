@@ -23,8 +23,17 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "flex-start",
         padding: 20,
     },
-    items: {
-        padding: 10,
+    form: {
+        margin:10,
+        padding: 20,
+        border: '0.5px solid',
+        borderColor: '#767676;',
+        borderRadius: '5px',
+        '&:hover': {
+            background: '#e6e6e6',
+            border: '0.5px solid',
+            borderColor: '#737373',
+        }
     },
 
     button: {
@@ -77,23 +86,9 @@ function Products(props) {
                 <div>{error}</div>
             ) : (
                 <div>
-
-                    {/* {products.map((product) => (
-                        <Grid container>
-                            <img height='100px' width='100px' src={product.image} alt={product.description} />
-                            <Grid item onClick={() => history.push('/productdetails/id/' + product._id)} key={product._id}>
-                                <Typography>  {product.name}</Typography>
-                                <Typography>  {product.brand}</Typography>
-                                <Typography>  {product.price}</Typography>
-                            </Grid>
-                        </Grid>
-                    ))} */}
-
-
-                    <Grid className={classes.root1} container>
+                    <Grid className={classes.root} container>
                         {products.map((product) => (
-                            <Grid className={classes.items} item onClick={() => history.push('/productdetails/id/' + product._id)} key={product._id}>
-
+                            <Grid className={classes.form} item onClick={() => history.push('/productdetails/id/' + product._id)} key={product._id}>
                                 <Grid container>
                                     <img height='200px' width='200px' src={product.image} alt={product.description} />
                                 </Grid>

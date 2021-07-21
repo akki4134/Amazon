@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react"
 
-
 //import { listDepartments } from "../Redux/Actions/departmentAction";
 import { detailsProduct } from '../Redux/Actions/productAction'
 import {
@@ -9,13 +8,14 @@ import {
     Typography,
     makeStyles,
     Button,
-    // Select,
-    // MenuItem,
-    // FormControl,
-    // InputLabel,
-    TextField,
+    Select,
+    InputLabel,
+    // TextField,
     Divider,
+    FormControl,
 } from '@material-ui/core';
+
+//import { useHistory } from "react-router-dom";
 
 // import ProductDetails from './ProductDetails';
 
@@ -36,9 +36,26 @@ const useStyles = makeStyles((theme) => ({
         borderColor: '#767676;',
         borderRadius: '5px',
     },
+    image: {
+        [theme.breakpoints.up('xs')]: {
+            height: 150,
+            width: 150,
+        },
+        [theme.breakpoints.up('sm')]: {
+            height: 200,
+            width: 200,
+        },
+        [theme.breakpoints.up('md')]: {
+            height: 300,
+            width: 300,
+        },
+        [theme.breakpoints.up('lg')]: {
+            height: 500,
+            width: 500,
+        },
+    },
     button: {
         margin: 5,
-        width: 200,
         textTransform: 'none',
         background: '#f0c14b',
         color: '#000',
@@ -47,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
             border: '0.5px solid',
             borderColor: '#737373',
         }
-
     },
     textfeild: {
         fontSize: 10,
@@ -65,24 +81,29 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function ProductDetails(props) {
-    console.log(props)
 
     const classes = useStyles();
 
     const dispatch = useDispatch();
 
-    //  const history = useHistory()
+    //const history = useHistory()
 
     const productDetails = useSelector((state) => state.productDetails);
     const { product, loading, error } = productDetails;
     const [quantity, setQuantity] = useState('1')
-    
+    const countInStock = 10
+    const productId = props.match.params.id
+
     useEffect(() => {
-        dispatch(detailsProduct(props.match.params.id));
+        dispatch(detailsProduct(productId));
         return () => {
             //
         };
-    }, [dispatch, props.match.params.id]);
+    }, [dispatch, productId]);
+
+    const addToCartHandler =()=>{
+        props.history.push(`/cart/${productId}?quantity=${quantity}`)
+    }
 
     return (
         <div>
@@ -93,22 +114,41 @@ function ProductDetails(props) {
             ) : (
                 <div>
                     <Grid container className={classes.root}>
-                        <Grid item xs={12} sm={5} md={5} lg={5}>
+                        <Grid item xs={5} sm={5} md={5} lg={5}>
                             <div>
-                                <img height='500px' width='500px' src={product.image} alt="product"></img>
+                                <img className={classes.image} src={product.image} alt="product"></img>
                             </div>
                         </Grid>
-                        <Grid item xs={12} sm={5} md={5} lg={5}>
+                        <Grid item xs={5} sm={5} md={5} lg={5}>
                             <Typography className={classes.h2}>{product.description}</Typography>
                             <Typography className={classes.h2}>{product.brand}</Typography>
                             <Divider />
                             <Typography className={classes.h3}>Price:₹ {product.price}</Typography>
                             <Typography className={classes.h3}>Inclusive of all taxes</Typography>
                         </Grid>
-                        <Grid item xs={12} sm={2} md={2} lg={2}>
+                        <Grid item xs={5} sm={2} md={2} lg={2}>
                             <Grid container className={classes.form} >
-                                <TextField className={classes.textfeild} id="quantity" label="Quantity" value={quantity} size="small" variant="outlined" />
-                                <Button className={classes.button} variant="contained"> Add to Cart</Button>
+                                {/* <TextField className={classes.textfeild} id="quantity" label="Quantity" value={quantity} size="small" variant="outlined" /> */}
+                                <FormControl variant="outlined">
+                                    <InputLabel id="Quantity">Quantity</InputLabel>
+                                    <Select
+                                        labelId="Quantity"
+                                        id="Quantity"
+
+                                        value={quantity}
+                                        onChange={(e) => setQuantity(e.target.value)}
+                                        label="Quantity"
+                                    >
+                                        {[...Array(countInStock).keys()].map(
+                                            (x) => (
+                                                <option key={x + 1} value={x + 1}>
+                                                    {x + 1}
+                                                </option>
+                                            )
+                                        )}
+                                    </Select>
+                                </FormControl>
+                                <Button onClick={addToCartHandler} className={classes.button} variant="contained"> Add to Cart</Button>
                                 <Button className={classes.button} variant="contained"> Buy Now</Button>
                             </Grid>
                         </Grid>

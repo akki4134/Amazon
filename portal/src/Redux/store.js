@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk'
 
-// import { cartReducer } from './reducers/cartReducers';
+import { cartReducer } from '../Redux/Reducers/cartReducer';
 // import {
 //   orderCreateReducer,
 //   orderDeleteReducer,
@@ -46,12 +46,17 @@ const initialState = {
       ? JSON.parse(localStorage.getItem('userInfo'))
       : null,
   },
+  cart: {
+    cartItems: localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems'))
+      : [],
+  }
 };
 
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
-  //   cart: cartReducer,
+  cart: cartReducer,
   departmentList: departmentListReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

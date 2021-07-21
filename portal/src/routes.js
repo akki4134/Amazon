@@ -1,9 +1,11 @@
+import LoginScreen from './screens/Login'
+import RegisterScreen from './screens/Register'
 
 import HomeScreen from './screens/HomeContent'
-import LoginScreen from './screens/Login'
+import CartScreen from './screens/Cart'
 import ProductScreen from './screens/Products'
 import ProductDetailsScreen from './screens/ProductDetails'
-import RegisterScreen from './screens/Register'
+
 import AdminHomeScreen from './Admin/screens/AdminHome'
 import AdminReportsScreen from './Admin/screens/Reports'
 
@@ -24,6 +26,8 @@ function routes() {
 
                 <Route path='/products/' component={ProductScreen} />
                 <Route path='/productdetails/id/:id' component={ProductDetailsScreen} />
+
+                <Route path='/cart/:id?' component={CartScreen}/>
 
                 <Route path='/adminHome' component={AdminHomeScreen} />
                 <Route path='/adminReports' component={AdminReportsScreen} />
