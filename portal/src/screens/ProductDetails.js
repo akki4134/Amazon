@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         margin: 5,
+        width: '100%',
         textTransform: 'none',
         background: '#f0c14b',
         color: '#000',

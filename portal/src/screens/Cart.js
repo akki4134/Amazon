@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart , removeFromCart } from '../Redux/Actions/cartAction';
+import { addToCart, removeFromCart } from '../Redux/Actions/cartAction';
 
 
 import {
@@ -15,7 +16,11 @@ import {
     TableRow,
     TableCell,
     Avatar,
-   
+    Typography,
+    Divider,
+    Grid,
+    Button,
+
 } from '@material-ui/core';
 
 import { FaTrash } from "react-icons/fa";
@@ -23,19 +28,16 @@ import { FaTrash } from "react-icons/fa";
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        background: '#fff',
-        display: "flex",
-        justifyContent: "center",
         padding: 20,
+        height: '100%',
+        width: '100%'
     },
-    form: {
-        padding: 10,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        border: '0.5px solid',
-        borderColor: '#767676;',
-        borderRadius: '5px',
+    main: {
+        background: '#fff',
+        padding: 20,
+        margin: 10,
+        height: '100%',
+        width: '100%'
     },
     Avatar: {
         [theme.breakpoints.up('xs')]: {
@@ -59,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 5,
         textTransform: 'none',
         background: '#f0c14b',
+        width: '100%',
         color: '#000',
         '&:hover': {
             background: '#f0c14b',
@@ -66,12 +69,30 @@ const useStyles = makeStyles((theme) => ({
             borderColor: '#737373',
         }
     },
+    delete: {
+        fontSize: 20,
+        color: '#ff8533',
+        '&:hover': {
+            color: '#ff3333'
+
+        }
+    },
+    h2: {
+        fontSize: 40,
+        fontWeight: 800,
+
+    },
+    h3: {
+        fontSize: 20,
+        fontWeight: 800,
+    }
 
 }))
 
 function Cart(props) {
 
     const classes = useStyles();
+
 
     const productId = props.match.params.id
 
@@ -85,7 +106,7 @@ function Cart(props) {
 
     const removeFromCartHandler = (productId) => {
         dispatch(removeFromCart(productId));
-      }
+    }
 
     useEffect(() => {
         if (productId) {
@@ -100,42 +121,44 @@ function Cart(props) {
                 <div>{error}</div>
             ) : (
                 <div>
-                    {/* {cartItems.map((item) => (
-                        <List component="nav" aria-label="main mailbox folders">
-                            <ListItem button>
-                                <ListItemAvatar>
-                                    <Avatar alt={item.name} src={item.image} />
-                                </ListItemAvatar>
-                                <ListItemText> Product : {item.name} </ListItemText>
-                                <ListItemText> price : {item.price} </ListItemText>
-                                <ListItemText> Quantity : {item.quantity} </ListItemText>
-                            </ListItem>
-                        </List>
-                    ))} */}
-                    <Table aria-label="simple table">
-                        {/* <TableHead>
-                            <TableRow>
-                                <TableCell>Product Name</TableCell>
-                                <TableCell>Product</TableCell>
-                                <TableCell>Quantity</TableCell>
-                                <TableCell>Price</TableCell>
-                                <TableCell>Delete</TableCell>
-                            </TableRow>
-                        </TableHead> */}
-                        <TableBody>
-                            {cartItems.map((item) => (
-                                <>
-                                    <TableRow key={item.product}>
-                                        <TableCell component="th" scope="row" > {item.name}</TableCell>
-                                        <TableCell><Avatar className={classes.Avatar} alt={item.name} src={item.image} /></TableCell>
-                                        <TableCell>{item.quantity}</TableCell>
-                                        <TableCell>{item.price}</TableCell>
-                                        <TableCell><FaTrash  onClick={() => removeFromCartHandler(item.product)}  /></TableCell>
-                                    </TableRow>
-                                </>
-                            ))}
-                        </TableBody>
-                    </Table>
+
+                    <Grid container className={classes.root}>
+
+                        <Grid className={classes.main} item xs={12} sm={12} md={8} lg={8}>
+                            <Typography className={classes.h2}>Shopping Cart</Typography>
+                            <Divider />
+
+                            <Table aria-label="simple table">
+                                <TableBody>
+                                    {cartItems.map((item) => (
+                                        <>
+                                            <TableRow key={item.product} >
+                                                <TableCell component="th" scope="row" >
+                                                    <Link to={`/productdetails/id/${item.product}`} >
+                                                        {item.name}
+                                                    </Link>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Link to={`/productdetails/id/${item.product}`} >
+                                                        <Avatar className={classes.Avatar} alt={item.name} src={item.image} />
+                                                    </Link>
+                                                </TableCell>
+                                                <TableCell>{item.quantity}</TableCell>
+                                                <TableCell>{item.price}</TableCell>
+                                                <TableCell>
+                                                    <FaTrash className={classes.delete} onClick={() => removeFromCartHandler(item.product)} />
+                                                </TableCell>
+                                            </TableRow>
+                                        </>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </Grid>
+                        <Grid className={classes.main} item xs={12} sm={12} md={3} lg={3}>
+                            <Typography className={classes.h3} >Subtotal ( {cartItems.length} items):8688.00</Typography>
+                            <Button className={classes.button}>Proceed to Buy</Button>
+                        </Grid>
+                    </Grid>
                 </div>
             )}
         </div>

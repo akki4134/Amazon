@@ -8,11 +8,12 @@ import {
     Badge,
 } from '@material-ui/core';
 
-import { IconContext } from 'react-icons'
 import { IoMenu, } from 'react-icons/io5'
-import { GrCart } from "react-icons/gr"
+import { FaCartPlus } from "react-icons/fa"
 
 import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -133,13 +134,15 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     cart: {
-        color: 'pink'
-
+        fontSize: 30
     },
 }));
 
 
 const Navigation = () => {
+
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart
 
     const history = useHistory()
 
@@ -190,17 +193,13 @@ const Navigation = () => {
                         </Typography>
                     </div>
                     <div onClick={() => history.push('/cart')} className={classes.maintitle}>
-                        {/* <Badge badgeContent={4}>
-
-                        </Badge> */}
-
-
-                        {/* <IconContext.Provider value={{ style: { color: "#fff" } }}>
-                         
-                        </IconContext.Provider>
-                       */}
+                       
+                            <Badge badgeContent={cartItems.length} color="primary">
+                                <FaCartPlus className={classes.cart} />
+                            </Badge>
+                     
                     </div>
-                    <GrCart size={35} style={{ fill: 'pink' }} />
+
 
 
                 </Toolbar>

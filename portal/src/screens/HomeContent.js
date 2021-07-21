@@ -6,12 +6,15 @@ import Button from 'react-bootstrap/Button'
 import Slider from '../components/Slider'
 import { useHistory } from 'react-router-dom'
 
-// import ProductScreen from './Products'
+import { useSelector } from 'react-redux'
 
 
 function HomeContent() {
 
     let history = useHistory();
+
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
 
     return (
 
@@ -31,7 +34,7 @@ function HomeContent() {
                             </div>
 
                             <div className="row">
-                                <div onClick={()=> history.push({  pathname: '/products', state: 'shirts' })} className="col">
+                                <div onClick={() => history.push({ pathname: '/products', state: 'shirts' })} className="col">
                                     {/* <div className="col"> */}
                                     {/* <Link to='/products'>
                                         <img className="img-thumbnail"
@@ -48,7 +51,7 @@ function HomeContent() {
                                     <p> Men's Clothing </p>
                                 </div>
 
-                                <div onClick={()=> history.push({  pathname: '/products', state: 'pants' })}  className="col">
+                                <div onClick={() => history.push({ pathname: '/products', state: 'pants' })} className="col">
                                     <img className="img-thumbnail"
                                         src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/Gateway/WRS-Jun/PC_QC_186/Comp-186/372/2-min._SY232_CB666463578_.jpg"
                                         alt=""
@@ -181,12 +184,24 @@ function HomeContent() {
                         <div className="col">
                             <div className="home__row">
 
-                                <div className="header_text">
-                                    Sign in for your best experience
-                                </div>
-                                <div className="button">
-                                    <Button size="sm" onClick={() => { history.push('/login') }} variant="warning">Sign in Securely</Button>
-                                </div>
+                                {userInfo ?
+
+
+                                    <div className="header_text">
+                                        Hello!!  Welcome Back {userInfo.name}
+                                    </div>
+                                    :
+                                    <div>
+                                        <div className="header_text">
+                                            Sign in for your best experience
+                                        </div>
+                                        <div className="button">
+                                            <Button size="sm" onClick={() => { history.push('/login') }} variant="warning">Sign in Securely</Button>
+                                        </div>
+                                    </div>
+                                }
+
+
                             </div>
                         </div>
                         <br />
