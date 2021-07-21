@@ -114,6 +114,11 @@ function Cart(props) {
         }
     }, [dispatch, productId, quantity])
 
+    const countInStock = 10
+    const totalItems = cartItems.reduce((totalitems, item) => totalitems + parseInt(item.quantity), 0);
+    const totalAmount = cartItems.reduce((totalamount, item) => totalamount + parseInt(item.quantity * item.price), 0);
+
+
     return (
 
         <div>
@@ -131,31 +136,45 @@ function Cart(props) {
                             <Table aria-label="simple table">
                                 <TableBody>
                                     {cartItems.map((item) => (
-                                        <>
-                                            <TableRow key={item.product} >
-                                                <TableCell component="th" scope="row" >
-                                                    <Link to={`/productdetails/id/${item.product}`} >
-                                                        {item.name}
-                                                    </Link>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Link to={`/productdetails/id/${item.product}`} >
-                                                        <Avatar className={classes.Avatar} alt={item.name} src={item.image} />
-                                                    </Link>
-                                                </TableCell>
-                                                <TableCell>{item.quantity}</TableCell>
-                                                <TableCell>{item.price}</TableCell>
-                                                <TableCell>
-                                                    <FaTrash className={classes.delete} onClick={() => removeFromCartHandler(item.product)} />
-                                                </TableCell>
-                                            </TableRow>
-                                        </>
+                                        <TableRow key={item.product} >
+                                            <TableCell component="th" scope="row" >
+                                                <Link to={`/productdetails/id/${item.product}`} >
+                                                    {item.name}
+                                                </Link>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Link to={`/productdetails/id/${item.product}`} >
+                                                    <Avatar className={classes.Avatar} alt={item.name} src={item.image} />
+                                                </Link>
+                                            </TableCell>
+                                            <TableCell>
+                                                <select
+                                                    value={item.quantity}
+                                                    onChange={(e) =>
+                                                        dispatch(
+                                                            addToCart(item.product, Number(e.target.value))
+                                                        )}
+                                                >
+                                                    {[...Array(countInStock).keys()].map(
+                                                        (x) => (
+                                                            <option key={x + 1} value={x + 1}>
+                                                                {x + 1}
+                                                            </option>
+                                                        )
+                                                    )}
+                                                </select>
+                                            </TableCell>
+                                            <TableCell>{item.quantity * item.price}</TableCell>
+                                            <TableCell>
+                                                <FaTrash className={classes.delete} onClick={() => removeFromCartHandler(item.product)} />
+                                            </TableCell>
+                                        </TableRow>
                                     ))}
                                 </TableBody>
                             </Table>
                         </Grid>
                         <Grid className={classes.main} item xs={12} sm={12} md={3} lg={3}>
-                            <Typography className={classes.h3} >Subtotal ( {cartItems.length} items):8688.00</Typography>
+                            <Typography className={classes.h3} >Subtotal ( {totalItems} items):{totalAmount}</Typography>
                             <Button className={classes.button}>Proceed to Buy</Button>
                         </Grid>
                     </Grid>

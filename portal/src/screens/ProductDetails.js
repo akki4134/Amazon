@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react"
 
 
-import { addToCart } from '../Redux/Actions/cartAction';
+//import { addToCart } from '../Redux/Actions/cartAction';
 
 import { detailsProduct } from '../Redux/Actions/productAction'
 import {
@@ -11,10 +11,10 @@ import {
     makeStyles,
     Button,
     Select,
-    InputLabel,
+    // InputLabel,
     // TextField,
     Divider,
-    FormControl,
+    // FormControl,
 } from '@material-ui/core';
 
 //import { useHistory } from "react-router-dom";
@@ -104,11 +104,11 @@ function ProductDetails(props) {
         };
     }, [dispatch, productId]);
 
-    const addToCartHandler =()=>{
-     
-        dispatch(addToCart(productId, quantity))
-       
-       // props.history.push(`/cart/${productId}?quantity=${quantity}`)
+    const addToCartHandler = () => {
+
+        //   dispatch(addToCart(productId, quantity))
+
+        props.history.push(`/cart/${productId}?quantity=${quantity}`)
     }
 
     return (
@@ -135,25 +135,24 @@ function ProductDetails(props) {
                         <Grid item xs={5} sm={2} md={2} lg={2}>
                             <Grid container className={classes.form} >
                                 {/* <TextField className={classes.textfeild} id="quantity" label="Quantity" value={quantity} size="small" variant="outlined" /> */}
-                                <FormControl variant="outlined">
-                                    <InputLabel id="Quantity">Quantity</InputLabel>
-                                    <Select
-                                        labelId="Quantity"
-                                        id="Quantity"
-
-                                        value={quantity}
-                                        onChange={(e) => setQuantity(e.target.value)}
-                                        label="Quantity"
-                                    >
-                                        {[...Array(countInStock).keys()].map(
-                                            (x) => (
-                                                <option key={x + 1} value={x + 1}>
-                                                    {x + 1}
-                                                </option>
-                                            )
-                                        )}
-                                    </Select>
-                                </FormControl>
+                                {/* <FormControl variant="outlined">
+                                    <InputLabel id="Quantity">Quantity</InputLabel> */}
+                                <Select
+                                    variant="outlined"
+                                    value={quantity}
+                                    onChange={(e) => setQuantity(e.target.value)}
+                                    id="Quantity"
+                                    label="Quantity"
+                                >
+                                    {[...Array(countInStock).keys()].map(
+                                        (x) => (
+                                            <option key={x + 1} value={x + 1}>
+                                                {x + 1}
+                                            </option>
+                                        )
+                                    )}
+                                </Select>
+                                {/* </FormControl> */}
                                 <Button onClick={addToCartHandler} className={classes.button} variant="contained"> Add to Cart</Button>
                                 <Button className={classes.button} variant="contained"> Buy Now</Button>
                             </Grid>

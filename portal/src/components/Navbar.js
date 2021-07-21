@@ -151,6 +151,10 @@ const Navigation = () => {
 
     const classes = useStyles();
 
+    const totalItems = cartItems.reduce((totalitems, item) => totalitems + parseInt(item.quantity), 0);
+ 
+
+
     return (
         <div className={classes.root}>
             <AppBar className={classes.navbar} position="static">
@@ -211,7 +215,7 @@ const Navigation = () => {
                     </div>
                     <div onClick={() => history.push('/cart')} className={classes.maintitle}>
 
-                        <Badge badgeContent={cartItems.length} color="primary">
+                        <Badge badgeContent={totalItems} color="primary">
                             <FaCartPlus className={classes.cart} />
                         </Badge>
 
