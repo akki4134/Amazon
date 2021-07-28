@@ -21,6 +21,7 @@ function Shipping(props) {
     return (
         <div>
             <Checkout step1 step2></Checkout>
+            shipping
         </div>
     )
 }
