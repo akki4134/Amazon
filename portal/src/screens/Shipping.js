@@ -14,7 +14,9 @@ function Shipping(props) {
     // const userAddressMap = useSelector((state) => state.userAddressMap);
     // const { address: addressMap } = userAddressMap;
 
-
+    if (!userInfo) {
+        props.history.push('/login');
+    }
 
     return (
         <div>
