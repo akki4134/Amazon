@@ -118,6 +118,15 @@ function Cart(props) {
     const totalItems = cartItems.reduce((totalitems, item) => totalitems + parseInt(item.quantity), 0);
     const totalAmount = cartItems.reduce((totalamount, item) => totalamount + parseInt(item.quantity * item.price), 0);
 
+    const checkoutHandler = () => {
+        if (cartItems.length === 0) {
+            alert('No Items')
+        }
+        else {
+            props.history.push('/login?redirect=/products/shipping');
+        }
+
+    }
 
     return (
 
@@ -175,8 +184,9 @@ function Cart(props) {
                         </Grid>
                         <Grid className={classes.main} item xs={12} sm={12} md={3} lg={3}>
                             <Typography className={classes.h3} >Subtotal ( {totalItems} items):{totalAmount}</Typography>
-                            <Button className={classes.button}>Proceed to Buy</Button>
+                            <Button onClick={checkoutHandler} className={classes.button}>Proceed to Buy</Button>
                         </Grid>
+
                     </Grid>
                 </div>
             )}

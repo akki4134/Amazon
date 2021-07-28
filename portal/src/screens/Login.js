@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../Redux/Actions/userAction';
@@ -68,12 +67,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Login(props) {
 
-
-    let history = useHistory();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    
     const redirect = props.location.search
         ? props.location.search.split('=')[1]
         : '/'
@@ -100,7 +96,7 @@ function Login(props) {
         <div className={classes.root}>
 
             <Grid>
-                <Grid onClick={() => history.push('/')} style={{ marginLeft: '50px' }} item>
+                <Grid onClick={() => props.history.push('/')} style={{ marginLeft: '50px' }} item>
                     <img height='100px' width='200px'
                         alt='logo'
                         src="http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"
@@ -158,7 +154,7 @@ function Login(props) {
                 </Grid>
                 <br />
 
-                <Button variant="contained" style={{ textTransform: 'none', marginLeft: '30px' }} onClick={() => history.push('/register')} >Create your Amazon account</Button>
+                <Button variant="contained" style={{ textTransform: 'none', marginLeft: '30px' }} onClick={() => props.history.push('/register')} >Create your Amazon account</Button>
             </Grid>
         </div >
     )

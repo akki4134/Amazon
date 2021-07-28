@@ -17,7 +17,7 @@ import {
     // FormControl,
 } from '@material-ui/core';
 
-//import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 // import ProductDetails from './ProductDetails';
 
@@ -89,8 +89,6 @@ function ProductDetails(props) {
 
     const dispatch = useDispatch();
 
-    //const history = useHistory()
-
     const productDetails = useSelector((state) => state.productDetails);
     const { product, loading, error } = productDetails;
     const [quantity, setQuantity] = useState('1')
@@ -105,11 +103,14 @@ function ProductDetails(props) {
     }, [dispatch, productId]);
 
     const addToCartHandler = () => {
-
         //   dispatch(addToCart(productId, quantity))
-
-        props.history.push(`/cart/${productId}?quantity=${quantity}`)
+        props.history.push(`/products/cart/${productId}?quantity=${quantity}`)
     }
+
+    const checkoutHandler = () => {
+        props.history.push('/signin?redirect=shipping');
+    }
+
 
     return (
         <div>
@@ -154,7 +155,7 @@ function ProductDetails(props) {
                                 </Select>
                                 {/* </FormControl> */}
                                 <Button onClick={addToCartHandler} className={classes.button} variant="contained"> Add to Cart</Button>
-                                <Button className={classes.button} variant="contained"> Buy Now</Button>
+                                <Button onClick={checkoutHandler} className={classes.button} variant="contained"> Buy Now</Button>
                             </Grid>
                         </Grid>
                     </Grid>

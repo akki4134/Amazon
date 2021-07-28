@@ -6,13 +6,22 @@ import {
     InputBase,
     makeStyles,
     Badge,
+    // Select,
+    // MenuItem,
+    Popover,
+    Button,
+    Grid,
 } from '@material-ui/core';
+
+import { useState } from 'react';
 
 import { IoMenu, } from 'react-icons/io5'
 import { FaCartPlus } from "react-icons/fa"
 
-import { Link, useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+
+import { signout } from '../Redux/Actions/userAction';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -133,13 +142,38 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    select: {
+        color: '#fff'
+    },
     cart: {
         fontSize: 30
+    },
+    button: {
+        margin: 5,
+        textTransform: 'none',
+        background: '#f0c14b',
+        width: '100%',
+        color: '#000',
+        '&:hover': {
+            background: '#f0c14b',
+            border: '0.5px solid',
+            borderColor: '#737373',
+        }
+    },
+    h2: {
+        fontSize: 20,
+        fontWeight: 800,
     },
 }));
 
 
 const Navigation = () => {
+
+    const history = useHistory()
+    const classes = useStyles();
+
+    // const [page, setpage] = useState()
+    // setpage('')
 
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart
@@ -147,14 +181,25 @@ const Navigation = () => {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-    const history = useHistory()
-
-    const classes = useStyles();
-
     const totalItems = cartItems.reduce((totalitems, item) => totalitems + parseInt(item.quantity), 0);
- 
 
+    const [anchorEl, setAnchorEl] = useState(null);
 
+    const handlePopoverOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handlePopoverClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+
+    const dispatch = useDispatch();
+
+    const signoutHandler = () => {
+        dispatch(signout())
+    }
     return (
         <div className={classes.root}>
             <AppBar className={classes.navbar} position="static">
@@ -181,29 +226,88 @@ const Navigation = () => {
                     </div>
 
                     <InputBase className={classes.search} />
+                    <div
+                        aria-owns={open ? 'mouse-over-popover' : undefined}
+                        aria-haspopup="true"
+                        onMouseEnter={handlePopoverOpen}
+                        onMouseLeave={handlePopoverClose}
+                        className={classes.maintitle}
+                    >
+                        <Popover
+                            id="mouse-over-popover"
+                            className={classes.popover}
+                            classes={{
+                                paper: classes.paper,
+                            }}
+                            open={open}
+                            anchorEl={anchorEl}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            onClose={handlePopoverClose}
+                            disableRestoreFocus
+                        >
+                            {userInfo ?
+                                <div className={classes.root}>
+                                    <Button className={classes.button} onClick={signoutHandler} >Sign Out</Button>
+                                    <Grid container spacing={2}>
+                                        <Grid item>
+                                            <Typography className={classes.h2}> Your Account </Typography>
+                                            <Typography> Your Orders </Typography>
+                                            <Typography> Your Wish List</Typography>
+                                            <Typography> Your Recommendations</Typography>
+                                            <Typography> Your Prime Membership</Typography>
+                                            <Typography> Your Prime Video</Typography>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography className={classes.h2}>Your Lists</Typography>
+                                            <Typography>Create a Wish List</Typography>
+                                            <Typography>Find a Wish List</Typography>
+                                            <Typography>Wish from Any Website</Typography>
+                                            <Typography>Discover Your Style</Typography>
+                                            <Typography>Explore Showroom</Typography>
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                                :
+                                <div className={classes.root}>
+                                    <Button className={classes.button} onClick={() => history.push(`/login`)}>Sign In </Button>
+                                    <Typography>New customer? Start here.</Typography>
+                                </div>
+                            }
 
-                    <div className={classes.maintitle}>
-
+                        </Popover>
                         {userInfo ?
-
                             <Typography className={classes.title} variant="h6">
                                 Hello {userInfo.name}
                             </Typography>
                             :
                             <Typography className={classes.title} variant="h6">
-                                <Link to='login'>
-                                    Hello,Sign In
-                                </Link>
-
+                                Hello,Sign In
                             </Typography>
-
                         }
-
-
                         <Typography className={classes.subtitle} variant="h6">
                             Account & List
                         </Typography>
                     </div>
+                    {/* <Select
+                        labelId="demo-customized-select-label"
+                        id="demo-customized-select"
+                        className={classes.select}
+                    >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
+                    </Select> */}
+
 
                     <div className={classes.maintitle}>
                         <Typography className={classes.title} variant="h6">
@@ -213,15 +317,12 @@ const Navigation = () => {
                             & Orders
                         </Typography>
                     </div>
-                    <div onClick={() => history.push('/cart')} className={classes.maintitle}>
+                    <div onClick={() => history.push('/products/cart')} className={classes.maintitle}>
 
                         <Badge badgeContent={totalItems} color="primary">
                             <FaCartPlus className={classes.cart} />
                         </Badge>
-
                     </div>
-
-
 
                 </Toolbar>
             </AppBar>
